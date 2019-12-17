@@ -13,9 +13,14 @@ namespace Scripts.Presenters
             _inputManagerView = inputManagerView;
         }
 
-        public Vector2 GetInput()
+        public float GetInput()
         {
             return _inputManagerView.GetInput();
+        }
+
+        public bool GetJump()
+        {
+            return _inputManagerView.GetJump();
         }
     }
 }

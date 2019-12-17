@@ -28,7 +28,9 @@ namespace Scripts.Presenters
             while (_isEnableInput)
             {
                 var direction = InputPresenter.GetInput();
-                GetInput(direction);
+                var jump = InputPresenter.GetJump();
+                PlayerPresenter.Move(direction);
+                PlayerPresenter.Jump(jump);
                 await UniTask.DelayFrame(1);
             }
         }
@@ -38,7 +40,7 @@ namespace Scripts.Presenters
             _isEnableInput = enable;
         }
 
-        public void GetInput(Vector2 direction)
+        public void GetDirection(float direction)
         {
            PlayerPresenter.Move(direction);
         }
