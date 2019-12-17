@@ -19,9 +19,17 @@ namespace Scripts.Presenters
             return _playerView.GetPosition();
         }
 
-        public void Move(Vector2 direction)
+        public void Move(float direction)
         {
             _playerView.Move(direction);
+        }
+
+        public void Jump(bool jump)
+        {
+            if (jump)
+            {
+                _playerView.Jump();
+            }
         }
     }
 }

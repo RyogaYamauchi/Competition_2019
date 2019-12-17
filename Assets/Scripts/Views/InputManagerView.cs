@@ -1,6 +1,5 @@
 using Framework;
 using UnityEngine;
-using UniRx.Async; //必要
 
 namespace Scripts.Views
 {
@@ -9,11 +8,15 @@ namespace Scripts.Views
         float _horizontalInput;
         float _verticalInput;
 
-        public Vector2 GetInput()
+        public float GetInput()
         {
             _horizontalInput = Input.GetAxis("Horizontal");
-            _verticalInput = Input.GetAxis("Vertical");
-            return new Vector2(_horizontalInput, _verticalInput);
+            return _horizontalInput;
+        }
+
+        public bool GetJump()
+        {
+            return Input.GetKey("j");
         }
     }
 }
