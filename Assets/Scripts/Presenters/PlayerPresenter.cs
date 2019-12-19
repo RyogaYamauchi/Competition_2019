@@ -1,5 +1,6 @@
 using Scripts.Models;
 using Scripts.Views;
+using UniRx.Async;
 using UnityEngine;
 
 namespace Scripts.Presenters
@@ -24,12 +25,33 @@ namespace Scripts.Presenters
             _playerView.Move(direction);
         }
 
-        public void Jump(bool jump)
+        public void Jump()
         {
-            if (jump)
+            Debug.Log("Jump");
+            _playerView.Jump().Forget();
+        }
+
+        public void Attack()
+        {
+            Debug.Log("Attack");
+            _playerView.Attack().Forget();
+        }
+
+        public void GetInput(InputViewModel inputViewModel)
+        {
+            
+            var direction = inputViewModel.GetDirection();
+            var inputString = inputViewModel.GetInput();
+            switch (inputString)
             {
-                _playerView.Jump();
+                case "c":
+                    Jump();
+                    break;
+                case "f":
+                    Attack();
+                    break;
             }
+            Move(direction);
         }
     }
 }

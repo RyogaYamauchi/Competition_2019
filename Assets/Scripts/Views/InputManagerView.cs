@@ -1,4 +1,5 @@
 using Framework;
+using Scripts.Models;
 using UnityEngine;
 
 namespace Scripts.Views
@@ -8,12 +9,13 @@ namespace Scripts.Views
         float _horizontalInput;
         float _verticalInput;
 
-        public Vector2 GetInput()
+        public InputViewModel GetInput()
         {
             _horizontalInput = Input.GetAxis("Horizontal");
             _verticalInput = Input.GetAxis("Vertical");
             var direction = new Vector2(_horizontalInput,_verticalInput);
-            return direction;
+            
+            return new InputViewModel(Input.inputString,direction);
         }
 
         public bool GetJump()

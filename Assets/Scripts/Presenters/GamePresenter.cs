@@ -1,6 +1,8 @@
+using Scripts.Models;
 using Scripts.Views;
 using UniRx.Async;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace Scripts.Presenters
 {
@@ -27,10 +29,8 @@ namespace Scripts.Presenters
             SetEnableInput(true);
             while (_isEnableInput)
             {
-                var direction = InputPresenter.GetInput();
-                var jump = InputPresenter.GetJump();
-                PlayerPresenter.Move(direction);
-                PlayerPresenter.Jump(jump);
+                var inputViewModel = InputPresenter.GetInput();
+                PlayerPresenter.GetInput(inputViewModel);
                 await UniTask.DelayFrame(1);
             }
         }
@@ -38,11 +38,6 @@ namespace Scripts.Presenters
         public void SetEnableInput(bool enable)
         {
             _isEnableInput = enable;
-        }
-
-        public void GetDirection(Vector2 direction)
-        {
-           PlayerPresenter.Move(direction);
         }
     }
 }

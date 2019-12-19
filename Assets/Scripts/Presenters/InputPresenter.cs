@@ -1,3 +1,4 @@
+using Scripts.Models;
 using Scripts.Views;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace Scripts.Presenters
             _inputManagerView = inputManagerView;
         }
 
-        public Vector2 GetInput()
+        public InputViewModel GetInput()
         {
             return _inputManagerView.GetInput();
         }

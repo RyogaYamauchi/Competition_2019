@@ -1,5 +1,6 @@
 using System;
 using Framework;
+using Scripts.Models;
 using UniRx.Async;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,15 +17,61 @@ namespace Scripts.Views
         private float _moveSpeed = 50;
         private Sprite[] _standingSprites;
         private Sprite[] _walkingSprites;
+        private Sprite[] _kenSprites;
         private int _jumpPower = 1000;
+        private PlayerAnimationEnum _animation;
+        private bool _isAnimating;
 
         private void Start()
         {
             _standingSprites = Resources.LoadAll<Sprite>("Sprites/Player/Standing");
-            StandingAnimation().Forget();
+            _kenSprites = Resources.LoadAll<Sprite>("Sprites/Player/Ken");
+            AnimationStateMachine(PlayerAnimationEnum.Idling).Forget();
         }
 
-        private async UniTask StandingAnimation()
+        private async UniTask AnimationStateMachine(PlayerAnimationEnum playerAnimationEnum)
+        {
+            if (!_isAnimating)
+            {
+                while (true)
+                {
+                    await IdlingAnimation();
+                }
+            }
+            switch (playerAnimationEnum)
+            {
+                case PlayerAnimationEnum.Attack:
+                    await Attack();
+                    break;
+                case PlayerAnimationEnum.Blocking:
+                    break;
+
+                case PlayerAnimationEnum.Jumpming:
+                    await Jump();
+                    break;
+                case PlayerAnimationEnum.Walking:
+                    break;
+            }
+        }
+
+        public async UniTask Jump()
+        {
+            _rigidbody.AddForce(Vector3.up * _jumpPower);
+            await AnimationStateMachine(PlayerAnimationEnum.Jumpming);
+        }
+
+        public async UniTask Attack()
+        {
+            Debug.Log("Attack!!");
+            await AnimationStateMachine(PlayerAnimationEnum.Attack);
+        }
+
+        public async UniTask Blocking()
+        {
+            await AnimationStateMachine(PlayerAnimationEnum.Blocking);
+        }
+
+        private async UniTask IdlingAnimation()
         {
             var cnt = 0;
             var max = _standingSprites.Length - 1;
@@ -35,6 +82,30 @@ namespace Scripts.Views
                 cnt++;
                 if (cnt > max) cnt = 0;
             }
+
+        }
+
+        private async UniTask AttackAnimation()
+        {
+            _isAnimating = true;
+            var cnt = 0;
+            var max = _kenSprites.Length - 1;
+            while (true)
+            {
+                await UniTask.Delay(100);
+                _image.sprite = _kenSprites[cnt];
+                cnt++;
+                if (cnt > max)
+                {
+                    IdlingAnimation().Forget();
+                    _isAnimating = false;
+                    break;
+                }
+            }
+        }
+
+        private async UniTask JumpingAnimation()
+        {
         }
 
         public void SetPosition(Vector2 pos)
@@ -55,12 +126,6 @@ namespace Scripts.Views
             _moveVector.y = _rigidbody.velocity.y;
             var velocity = _rigidbody.velocity;
             _rigidbody.AddForce(_moveForceMultiplier * (_moveVector - velocity));
-        }
-
-        public void Jump()
-        {
-            Debug.Log("Jump");
-            _rigidbody.AddForce(Vector3.up * _jumpPower);
         }
     }
 }
