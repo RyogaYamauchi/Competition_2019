@@ -40,7 +40,7 @@ namespace Scripts.Presenters
             _isEnableInput = enable;
         }
 
-        public void GetDirection(float direction)
+        public void GetDirection(Vector2 direction)
         {
            PlayerPresenter.Move(direction);
         }

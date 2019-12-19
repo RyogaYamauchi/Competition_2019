@@ -8,15 +8,17 @@ namespace Scripts.Views
         float _horizontalInput;
         float _verticalInput;
 
-        public float GetInput()
+        public Vector2 GetInput()
         {
             _horizontalInput = Input.GetAxis("Horizontal");
-            return _horizontalInput;
+            _verticalInput = Input.GetAxis("Vertical");
+            var direction = new Vector2(_horizontalInput,_verticalInput);
+            return direction;
         }
 
         public bool GetJump()
         {
-            return Input.GetKey("j");
+            return Input.GetKeyDown("j");
         }
     }
 }

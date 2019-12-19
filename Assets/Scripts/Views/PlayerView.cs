@@ -13,10 +13,10 @@ namespace Scripts.Views
 
         private float _moveForceMultiplier = 50f;
         private Vector3 _moveVector;
-        private float _moveSpeed = 20;
+        private float _moveSpeed = 50;
         private Sprite[] _standingSprites;
         private Sprite[] _walkingSprites;
-        private int _jumpPower = 10;
+        private int _jumpPower = 1000;
 
         private void Start()
         {
@@ -27,7 +27,7 @@ namespace Scripts.Views
         private async UniTask StandingAnimation()
         {
             var cnt = 0;
-            var max = _standingSprites.Length-1;
+            var max = _standingSprites.Length - 1;
             while (true)
             {
                 await UniTask.Delay(200);
@@ -47,17 +47,20 @@ namespace Scripts.Views
             return gameObject.transform.position;
         }
 
-        public void Move(float direction)
+        public void Move(Vector2 direction)
         {
             _moveVector = Vector3.zero;
-            _moveVector.x = _moveSpeed * direction;
+            _moveVector.x = _moveSpeed * direction.x;
+            _moveVector.z = _moveSpeed * direction.y;
+            _moveVector.y = _rigidbody.velocity.y;
             var velocity = _rigidbody.velocity;
             _rigidbody.AddForce(_moveForceMultiplier * (_moveVector - velocity));
         }
 
         public void Jump()
         {
-            _rigidbody.AddForce(Vector3.up*_jumpPower);
+            Debug.Log("Jump");
+            _rigidbody.AddForce(Vector3.up * _jumpPower);
         }
     }
 }

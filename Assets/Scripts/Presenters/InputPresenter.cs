@@ -1,5 +1,4 @@
 using Scripts.Views;
-using UniRx.Async;
 using UnityEngine;
 
 namespace Scripts.Presenters
@@ -13,7 +12,7 @@ namespace Scripts.Presenters
             _inputManagerView = inputManagerView;
         }
 
-        public float GetInput()
+        public Vector2 GetInput()
         {
             return _inputManagerView.GetInput();
         }
