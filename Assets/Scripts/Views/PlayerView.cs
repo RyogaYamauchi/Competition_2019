@@ -23,10 +23,22 @@ namespace Scripts.Views
         private bool _isAnimating;
 
         private void Start()
-        {
-            _standingSprites = Resources.LoadAll<Sprite>("Sprites/Player/Standing");
-            _kenSprites = Resources.LoadAll<Sprite>("Sprites/Player/Ken");
+        {            Debug.Log("aaaa");
+            Debug.Log("aaaa");
+            Debug.Log("aaaa");
+            Debug.Log("aaaa");
+            Debug.Log("aaaa");
+            Debug.Log("aaaa");
+
+            _standingSprites = Resources.LoadAll<Sprite>("");
+            _kenSprites = Resources.LoadAll<Sprite>("");
             AnimationStateMachine(PlayerAnimationEnum.Idling).Forget();
+            Debug.Log("aaaa");
+            Debug.Log("aaaa");
+            Debug.Log("aaaa");
+            Debug.Log("aaaa");
+            Debug.Log("aaaa");
+
         }
 
         private async UniTask AnimationStateMachine(PlayerAnimationEnum playerAnimationEnum)
@@ -60,6 +72,11 @@ namespace Scripts.Views
             await AnimationStateMachine(PlayerAnimationEnum.Jumpming);
         }
 
+        
+        
+        
+        
+        
         public async UniTask Attack()
         {
             Debug.Log("Attack!!");
