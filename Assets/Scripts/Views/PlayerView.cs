@@ -23,99 +23,94 @@ namespace Scripts.Views
         private bool _isAnimating;
 
         private void Start()
-        {            Debug.Log("aaaa");
-            Debug.Log("aaaa");
-            Debug.Log("aaaa");
-            Debug.Log("aaaa");
-            Debug.Log("aaaa");
-            Debug.Log("aaaa");
-
-            _standingSprites = Resources.LoadAll<Sprite>("");
-            _kenSprites = Resources.LoadAll<Sprite>("");
-            AnimationStateMachine(PlayerAnimationEnum.Idling).Forget();
-            Debug.Log("aaaa");
-            Debug.Log("aaaa");
-            Debug.Log("aaaa");
-            Debug.Log("aaaa");
-            Debug.Log("aaaa");
-
+        {
+            _standingSprites = Resources.LoadAll<Sprite>("Sprites/Player/Standing");
+            _kenSprites = Resources.LoadAll<Sprite>("Sprites/Player/Ken");
+            _animation = PlayerAnimationEnum.Idling;
+            AnimationStateMachine().Forget();
         }
 
-        private async UniTask AnimationStateMachine(PlayerAnimationEnum playerAnimationEnum)
+        private async UniTask AnimationStateMachine()
         {
-            if (!_isAnimating)
+            while (true)
             {
-                while (true)
+                await UniTask.DelayFrame(1);
+                if (!_isAnimating)
                 {
-                    await IdlingAnimation();
+                    switch (_animation)
+                    {
+                        case PlayerAnimationEnum.Attack:
+                            await AttackAnimation();
+                            break;
+                        case PlayerAnimationEnum.Blocking:
+                            await Blocking();
+                            break;
+                        case PlayerAnimationEnum.Jumpming:
+                            await Jump();
+                            break;
+                        case PlayerAnimationEnum.Walking:
+                            break;
+                        case PlayerAnimationEnum.Idling:
+                            await IdlingAnimation();
+                            break;
+                    }
                 }
-            }
-            switch (playerAnimationEnum)
-            {
-                case PlayerAnimationEnum.Attack:
-                    await Attack();
-                    break;
-                case PlayerAnimationEnum.Blocking:
-                    break;
-
-                case PlayerAnimationEnum.Jumpming:
-                    await Jump();
-                    break;
-                case PlayerAnimationEnum.Walking:
-                    break;
             }
         }
 
         public async UniTask Jump()
         {
             _rigidbody.AddForce(Vector3.up * _jumpPower);
-            await AnimationStateMachine(PlayerAnimationEnum.Jumpming);
+            _animation = PlayerAnimationEnum.Jumpming;
         }
 
-        
-        
-        
-        
-        
         public async UniTask Attack()
         {
             Debug.Log("Attack!!");
-            await AnimationStateMachine(PlayerAnimationEnum.Attack);
+            _animation = PlayerAnimationEnum.Attack;
         }
 
         public async UniTask Blocking()
         {
-            await AnimationStateMachine(PlayerAnimationEnum.Blocking);
+            _animation = PlayerAnimationEnum.Blocking;
         }
 
         private async UniTask IdlingAnimation()
         {
             var cnt = 0;
             var max = _standingSprites.Length - 1;
+            _isAnimating = true;
             while (true)
             {
                 await UniTask.Delay(200);
                 _image.sprite = _standingSprites[cnt];
                 cnt++;
-                if (cnt > max) cnt = 0;
+                if (cnt > max)
+                {
+                    _isAnimating = false;
+                    break;
+                }
             }
-
         }
+        
+        
+        
 
         private async UniTask AttackAnimation()
         {
-            _isAnimating = true;
             var cnt = 0;
             var max = _kenSprites.Length - 1;
+            _isAnimating = true;
             while (true)
             {
-                await UniTask.Delay(100);
+                await UniTask.Delay(30);
                 _image.sprite = _kenSprites[cnt];
                 cnt++;
                 if (cnt > max)
                 {
                     IdlingAnimation().Forget();
                     _isAnimating = false;
+                    _animation = PlayerAnimationEnum.Idling;
                     break;
                 }
             }
