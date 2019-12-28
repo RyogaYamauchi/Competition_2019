@@ -9,23 +9,24 @@ namespace Scripts.Views
 {
     public class PlayerView : ViewBase
     {
-        [SerializeField] private Rigidbody _rigidbody = default;
+        [SerializeField] private Rigidbody2D _rigidbody = default;
         [SerializeField] private Image _image;
+        [SerializeField] private WeaponView _weaponView;
 
         private float _moveForceMultiplier = 50f;
         private Vector3 _moveVector;
         private float _moveSpeed = 50;
         private Sprite[] _standingSprites;
         private Sprite[] _walkingSprites;
-        private Sprite[] _kenSprites;
-        private int _jumpPower = 1000;
+        private Sprite[] _attackSprite;
+        private int _jumpPower = 10;
         private PlayerAnimationEnum _animation;
         private bool _isAnimating;
 
         private void Start()
         {
             _standingSprites = Resources.LoadAll<Sprite>("Sprites/Player/Standing");
-            _kenSprites = Resources.LoadAll<Sprite>("Sprites/Player/Ken");
+            _attackSprite = Resources.LoadAll<Sprite>("Sprites/Player/Attack/Player");
             _animation = PlayerAnimationEnum.Idling;
             AnimationStateMachine().Forget();
         }
@@ -98,13 +99,14 @@ namespace Scripts.Views
 
         private async UniTask AttackAnimation()
         {
+            _weaponView.PlayAttackAnimation();
             var cnt = 0;
-            var max = _kenSprites.Length - 1;
+            var max = _attackSprite.Length - 1;
             _isAnimating = true;
             while (true)
             {
                 await UniTask.Delay(30);
-                _image.sprite = _kenSprites[cnt];
+                _image.sprite = _attackSprite[cnt];
                 cnt++;
                 if (cnt > max)
                 {
@@ -134,10 +136,11 @@ namespace Scripts.Views
         {
             _moveVector = Vector3.zero;
             _moveVector.x = _moveSpeed * direction.x;
-            _moveVector.z = _moveSpeed * direction.y;
+            //_moveVector.z = _moveSpeed * direction.y;
             _moveVector.y = _rigidbody.velocity.y;
             var velocity = _rigidbody.velocity;
-            _rigidbody.AddForce(_moveForceMultiplier * (_moveVector - velocity));
+            var _moveVector2D = new Vector2(_moveVector.x,_moveVector.y);
+            _rigidbody.AddForce(_moveForceMultiplier * (_moveVector2D - velocity));
         }
     }
 }

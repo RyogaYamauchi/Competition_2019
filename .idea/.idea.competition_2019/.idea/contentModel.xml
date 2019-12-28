@@ -308,6 +308,7 @@
             <e p="GameView.cs" t="Include" />
             <e p="InputManagerView.cs" t="Include" />
             <e p="PlayerView.cs" t="Include" />
+            <e p="WeaponView.cs" t="Include" />
           </e>
         </e>
         <e p="UniRx.Async" t="Include">
