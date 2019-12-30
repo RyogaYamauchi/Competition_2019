@@ -29,6 +29,7 @@ namespace Scripts.Views
         public void Init(IPlayerPresenter presenter)
         {
             Presenter = presenter;
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
         private void Start()
