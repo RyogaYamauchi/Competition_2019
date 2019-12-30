@@ -12,17 +12,16 @@ namespace Scripts.Views
         [SerializeField] private Rigidbody2D _rigidbody = default;
         [SerializeField] private WeaponView _weaponView = default;
         [SerializeField] private SpriteRenderer _spriteRenderer = default;
-        
+
         public IPlayerPresenter Presenter { get; private set; }
 
         public float MoveForceMultiplier => Presenter.MoveForceMultiplier;
         public float MoveSpeed => Presenter.MoveSpeed;
         public float _jumpPower => Presenter.JumpPower;
-        
-        private AnimationEnum _animation;
+
         private bool _isAnimating;
 
-        
+
         /// <summary>
         /// Initialize
         /// </summary>
@@ -34,61 +33,54 @@ namespace Scripts.Views
 
         private void Start()
         {
-            _animation = AnimationEnum.PlayerIdling;
-            AnimationStateMachine().Forget();
+            AnimationStateMachine(AnimationEnum.PlayerIdling);
         }
 
-        private async UniTask AnimationStateMachine()
+        private void AnimationStateMachine(AnimationEnum animationEnum)
         {
-            while (true)
+            if (_isAnimating) return;
+            switch (animationEnum)
             {
-                await UniTask.DelayFrame(1);
-                if (!_isAnimating)
-                {
-                    switch (_animation)
-                    {
-                        case AnimationEnum.PlayerAttack3:
-                            await AttackAnimation();
-                            break;
-                        case AnimationEnum.PlayerBlocking:
-                            Blocking();
-                            break;
-                        case AnimationEnum.PlayerJumpming:
-                            Jump();
-                            break;
-                        case AnimationEnum.PlayerWalking:
-                            break;
-                        case AnimationEnum.PlayerIdling:
-                            await IdlingAnimation();
-                            break;
-                    }
-                }
+                case AnimationEnum.PlayerAttack3:
+                    AttackAnimation().Forget();
+                    break;
+                case AnimationEnum.PlayerBlocking:
+                    Blocking();
+                    break;
+                case AnimationEnum.PlayerJumpming:
+                    Jump();
+                    break;
+                case AnimationEnum.PlayerWalking:
+                    break;
+                case AnimationEnum.PlayerIdling:
+                    IdlingAnimation().Forget();
+                    break;
             }
         }
 
         public void Jump()
         {
             _rigidbody.AddForce(Vector3.up * _jumpPower);
-            _animation = AnimationEnum.PlayerJumpming;
+            AnimationStateMachine(AnimationEnum.PlayerJumpming);
         }
 
         public void Attack()
         {
             Debug.Log("Attack!!");
-            _animation = AnimationEnum.PlayerAttack3;
+            AnimationStateMachine(AnimationEnum.PlayerAttack3);
         }
 
         public void Blocking()
         {
-            _animation = AnimationEnum.PlayerBlocking;
+            AnimationStateMachine(AnimationEnum.PlayerBlocking);
         }
 
         private async UniTask IdlingAnimation()
         {
+            if(_isAnimating)return;
             var standingSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerIdling);
             var cnt = 0;
             var max = standingSprites.Length - 1;
-            _isAnimating = true;
             while (true)
             {
                 await UniTask.Delay(200);
@@ -96,7 +88,7 @@ namespace Scripts.Views
                 cnt++;
                 if (cnt > max)
                 {
-                    _isAnimating = false;
+                    AnimationStateMachine(AnimationEnum.PlayerIdling);
                     break;
                 }
             }
@@ -109,15 +101,18 @@ namespace Scripts.Views
             _weaponView.PlayAttackAnimation().Forget();
             var attackSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerAttack3);
             _isAnimating = true;
+
             var max = attackSprites.Length;
-            for (int i = 0; i < max; i++)
+            for (int i = 0;
+                i < max;
+                i++)
             {
                 _spriteRenderer.sprite = attackSprites[i];
                 await UniTask.Delay(50);
             }
 
             _isAnimating = false;
-            _animation = AnimationEnum.PlayerIdling;
+            AnimationStateMachine(AnimationEnum.PlayerIdling);
         }
 
 
@@ -130,6 +125,7 @@ namespace Scripts.Views
         {
             var moveVector = Vector3.zero;
             moveVector.x = MoveSpeed * direction.x;
+
             //_moveVector.z = _moveSpeed * direction.y;
             moveVector.y = _rigidbody.velocity.y;
             var velocity = _rigidbody.velocity;
