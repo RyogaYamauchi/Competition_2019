@@ -22,6 +22,9 @@ namespace Repository
 
             var standingSprites = CreateSprites("Sprites/Player/Standing");
 
+            var rightDashSprites = CreateSprites("Sprites/Player/DashRight");
+            var leftDashSprites = CreateSprites("Sprites/Player/DashLeft");
+
             _spriteDictionary.Add(AnimationEnum.WeaponAttack1,attackWeaponSprites1);
             _spriteDictionary.Add(AnimationEnum.WeaponAttack2, attackWeaponSprites2);
             _spriteDictionary.Add(AnimationEnum.WeaponAttack3, attackWeaponSprites3);
@@ -33,6 +36,9 @@ namespace Repository
             
             
             _spriteDictionary.Add(AnimationEnum.PlayerIdling, standingSprites);
+            
+            _spriteDictionary.Add(AnimationEnum.PlayerDashRight, rightDashSprites);
+            _spriteDictionary.Add(AnimationEnum.PlayerDashLeft,leftDashSprites);
         }
 
         private static Sprite[] CreateSprites(string path)

@@ -14,12 +14,13 @@ namespace Scripts.Presenters
         void Jump();
         void Attack();
         void GetInput(InputViewModel inputViewModel);
+        void UpdatePos(Vector3 transformPosition);
     }
 
     public class PlayerPresenter : IPlayerPresenter
     {
         private PlayerView _playerView = default;
-        public IPlayerModel PlayerModel { get; } = new PlayerModel();
+        public IPlayerModel PlayerModel => GameModel.Instance.PlayerModel;
 
         public float MoveForceMultiplier => PlayerModel.MoveForceMultiplier;
         public float MoveSpeed => PlayerModel.MoveSpeed;
@@ -68,6 +69,11 @@ namespace Scripts.Presenters
             }
 
             Move(direction);
+        }
+
+        public void UpdatePos(Vector3 transformPosition)
+        {
+            PlayerModel.UpdatePos(transformPosition);
         }
     }
 }

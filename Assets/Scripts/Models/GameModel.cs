@@ -6,10 +6,12 @@ namespace Scripts.Models
     {
         public static GameModel Instance { get; } = new GameModel();
         public EnemiesModel EnemiesModel { get; }
+        public IPlayerModel PlayerModel { get; }
 
         public GameModel()
         {
             EnemiesModel = new EnemiesModel();
+            PlayerModel = new PlayerModel();
         }
     }
 }

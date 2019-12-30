@@ -6,6 +6,8 @@ namespace Scripts.Models
         PlayerAttack2,
         PlayerAttack3,
         PlayerWalking,
+        PlayerDashRight,
+        PlayerDashLeft,
         PlayerIdling,
         PlayerJumpming,
         PlayerBlocking,

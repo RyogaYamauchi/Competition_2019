@@ -79,6 +79,11 @@ namespace Scripts.Views
         private async UniTask IdlingAnimation()
         {
             if (_isAnimating) return;
+            if (_rigidbody.velocity.x != 0)
+            {
+                DashAnimation().Forget();
+                return;
+            }
             var standingSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerIdling);
             var cnt = 0;
             var max = standingSprites.Length - 1;
@@ -86,6 +91,33 @@ namespace Scripts.Views
             {
                 await UniTask.Delay(200);
                 _spriteRenderer.sprite = standingSprites[cnt];
+                cnt++;
+                if (cnt > max)
+                {
+                    AnimationStateMachine(AnimationEnum.PlayerIdling);
+                    break;
+                }
+            }
+        }
+
+
+        private async UniTask DashAnimation()
+        {
+            Sprite[] dashAnimation;
+            if (_rigidbody.velocity.x > 0)
+            {
+                dashAnimation = AnimationRepository.GetSprites(AnimationEnum.PlayerDashRight);
+            }
+            else
+            {
+                dashAnimation = AnimationRepository.GetSprites(AnimationEnum.PlayerDashLeft);
+            }
+            var cnt = 0;
+            var max = dashAnimation.Length - 1;
+            while (true)
+            {
+                await UniTask.Delay(200);
+                _spriteRenderer.sprite = dashAnimation[cnt];
                 cnt++;
                 if (cnt > max)
                 {
@@ -132,6 +164,7 @@ namespace Scripts.Views
             var velocity = _rigidbody.velocity;
             var moveVector2D = new Vector2(moveVector.x, moveVector.y);
             _rigidbody.AddForce(MoveForceMultiplier * (moveVector2D - velocity));
+            Presenter.UpdatePos(gameObject.transform.position);
         }
     }
 }

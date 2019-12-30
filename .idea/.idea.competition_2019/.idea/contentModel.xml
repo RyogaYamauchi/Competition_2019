@@ -300,6 +300,7 @@
             <e p="PlayerModel.cs" t="Include" />
           </e>
           <e p="Presenters" t="Include">
+            <e p="CameraPresenter.cs" t="Include" />
             <e p="EnemyPresenter.cs" t="Include" />
             <e p="GamePresenter.cs" t="Include" />
             <e p="InputPresenter.cs" t="Include" />
@@ -313,6 +314,7 @@
             <e p="InputViewModel.cs" t="Include" />
           </e>
           <e p="Views" t="Include">
+            <e p="CameraManagerView.cs" t="Include" />
             <e p="EnemyView.cs" t="Include" />
             <e p="GameView.cs" t="Include" />
             <e p="InputManagerView.cs" t="Include" />

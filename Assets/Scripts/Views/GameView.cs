@@ -9,13 +9,14 @@ namespace Scripts.Views
         [SerializeField] private InputManagerView _inputManagerView = default;
 
         [SerializeField] private PlayerView _playerView = default;
+        [SerializeField] private CameraManagerView _cameraManagerView = default;
         [SerializeField] public GameObject EnemySpawnPoint = default;
 
 
         private void Awake()
         {
             DontDestroyOnLoad(this);
-            GamePresenter.Instance.Init(this, _inputManagerView, _playerView);
+            GamePresenter.Instance.Init(this, _inputManagerView, _playerView,_cameraManagerView);
         }
 
         public GameObject CreateGameObjectFromObject(Object obj)

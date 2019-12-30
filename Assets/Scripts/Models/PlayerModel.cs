@@ -10,6 +10,7 @@ namespace Scripts.Models
         void SetPosition(Vector2 position);
         void SetPosition(float x, float y);
         Vector2 GetPosition();
+        void UpdatePos(Vector3 pos);
     }
 
     public class PlayerModel : IPlayerModel
@@ -48,6 +49,11 @@ namespace Scripts.Models
         public Vector2 GetPosition()
         {
             return _position;
+        }
+
+        public void UpdatePos(Vector3 pos)
+        {
+            _position = new Vector2(pos.x,pos.y);
         }
     }
 }
