@@ -61,8 +61,8 @@ namespace Scripts.Views
 
         public void Jump()
         {
-            _rigidbody.AddForce(Vector3.up * _jumpPower);
-            AnimationStateMachine(AnimationEnum.PlayerJumpming);
+            _rigidbody.AddForce(Vector2.up * _jumpPower);
+            AnimationStateMachine(AnimationEnum.PlayerIdling);
         }
 
         public void Attack()
@@ -78,7 +78,7 @@ namespace Scripts.Views
 
         private async UniTask IdlingAnimation()
         {
-            if(_isAnimating)return;
+            if (_isAnimating) return;
             var standingSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerIdling);
             var cnt = 0;
             var max = standingSprites.Length - 1;
