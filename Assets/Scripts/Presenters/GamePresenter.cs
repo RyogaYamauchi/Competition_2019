@@ -1,8 +1,6 @@
-using Scripts.Models;
 using Scripts.Views;
 using UniRx.Async;
 using UnityEngine;
-using UnityEngine.Playables;
 
 namespace Scripts.Presenters
 {
@@ -10,7 +8,7 @@ namespace Scripts.Presenters
     {
         public static GamePresenter Instance { get; } = new GamePresenter();
         public InputPresenter InputPresenter { get; private set; }
-        public PlayerPresenter PlayerPresenter { get; private set; }
+        public IPlayerPresenter PlayerPresenter { get; private set; }
         public GameView GameView { get; private set; }
 
         private bool _isEnableInput;

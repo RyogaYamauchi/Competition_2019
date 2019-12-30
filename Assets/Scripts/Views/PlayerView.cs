@@ -1,33 +1,40 @@
-using System;
 using Framework;
+using Repository;
 using Scripts.Models;
+using Scripts.Presenters;
 using UniRx.Async;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Scripts.Views
 {
     public class PlayerView : ViewBase
     {
         [SerializeField] private Rigidbody2D _rigidbody = default;
-        [SerializeField] private Image _image;
-        [SerializeField] private WeaponView _weaponView;
+        [SerializeField] private WeaponView _weaponView = default;
+        [SerializeField] private SpriteRenderer _spriteRenderer = default;
+        
+        public IPlayerPresenter Presenter { get; private set; }
 
-        private float _moveForceMultiplier = 50f;
-        private Vector3 _moveVector;
-        private float _moveSpeed = 50;
-        private Sprite[] _standingSprites;
-        private Sprite[] _walkingSprites;
-        private Sprite[] _attackSprite;
-        private int _jumpPower = 10;
-        private PlayerAnimationEnum _animation;
+        public float MoveForceMultiplier => Presenter.MoveForceMultiplier;
+        public float MoveSpeed => Presenter.MoveSpeed;
+        public float _jumpPower => Presenter.JumpPower;
+        
+        private AnimationEnum _animation;
         private bool _isAnimating;
+
+        
+        /// <summary>
+        /// Initialize
+        /// </summary>
+        /// <param name="presenter"></param>
+        public void Init(IPlayerPresenter presenter)
+        {
+            Presenter = presenter;
+        }
 
         private void Start()
         {
-            _standingSprites = Resources.LoadAll<Sprite>("Sprites/Player/Standing");
-            _attackSprite = Resources.LoadAll<Sprite>("Sprites/Player/Attack/Player");
-            _animation = PlayerAnimationEnum.Idling;
+            _animation = AnimationEnum.PlayerIdling;
             AnimationStateMachine().Forget();
         }
 
@@ -40,18 +47,18 @@ namespace Scripts.Views
                 {
                     switch (_animation)
                     {
-                        case PlayerAnimationEnum.Attack:
+                        case AnimationEnum.PlayerAttack3:
                             await AttackAnimation();
                             break;
-                        case PlayerAnimationEnum.Blocking:
-                            await Blocking();
+                        case AnimationEnum.PlayerBlocking:
+                            Blocking();
                             break;
-                        case PlayerAnimationEnum.Jumpming:
-                            await Jump();
+                        case AnimationEnum.PlayerJumpming:
+                            Jump();
                             break;
-                        case PlayerAnimationEnum.Walking:
+                        case AnimationEnum.PlayerWalking:
                             break;
-                        case PlayerAnimationEnum.Idling:
+                        case AnimationEnum.PlayerIdling:
                             await IdlingAnimation();
                             break;
                     }
@@ -59,32 +66,33 @@ namespace Scripts.Views
             }
         }
 
-        public async UniTask Jump()
+        public void Jump()
         {
             _rigidbody.AddForce(Vector3.up * _jumpPower);
-            _animation = PlayerAnimationEnum.Jumpming;
+            _animation = AnimationEnum.PlayerJumpming;
         }
 
-        public async UniTask Attack()
+        public void Attack()
         {
             Debug.Log("Attack!!");
-            _animation = PlayerAnimationEnum.Attack;
+            _animation = AnimationEnum.PlayerAttack3;
         }
 
-        public async UniTask Blocking()
+        public void Blocking()
         {
-            _animation = PlayerAnimationEnum.Blocking;
+            _animation = AnimationEnum.PlayerBlocking;
         }
 
         private async UniTask IdlingAnimation()
         {
+            var standingSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerIdling);
             var cnt = 0;
-            var max = _standingSprites.Length - 1;
+            var max = standingSprites.Length - 1;
             _isAnimating = true;
             while (true)
             {
                 await UniTask.Delay(200);
-                _image.sprite = _standingSprites[cnt];
+                _spriteRenderer.sprite = standingSprites[cnt];
                 cnt++;
                 if (cnt > max)
                 {
@@ -93,39 +101,25 @@ namespace Scripts.Views
                 }
             }
         }
-        
-        
-        
+
 
         private async UniTask AttackAnimation()
         {
-            _weaponView.PlayAttackAnimation();
-            var cnt = 0;
-            var max = _attackSprite.Length - 1;
+            _weaponView.gameObject.SetActive(true);
+            _weaponView.PlayAttackAnimation().Forget();
+            var attackSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerAttack3);
             _isAnimating = true;
-            while (true)
+            var max = attackSprites.Length;
+            for (int i = 0; i < max; i++)
             {
-                await UniTask.Delay(30);
-                _image.sprite = _attackSprite[cnt];
-                cnt++;
-                if (cnt > max)
-                {
-                    IdlingAnimation().Forget();
-                    _isAnimating = false;
-                    _animation = PlayerAnimationEnum.Idling;
-                    break;
-                }
+                _spriteRenderer.sprite = attackSprites[i];
+                await UniTask.Delay(50);
             }
+
+            _isAnimating = false;
+            _animation = AnimationEnum.PlayerIdling;
         }
 
-        private async UniTask JumpingAnimation()
-        {
-        }
-
-        public void SetPosition(Vector2 pos)
-        {
-            gameObject.transform.position = new Vector3(pos.x, pos.y, 0);
-        }
 
         public Vector3 GetPosition()
         {
@@ -134,13 +128,13 @@ namespace Scripts.Views
 
         public void Move(Vector2 direction)
         {
-            _moveVector = Vector3.zero;
-            _moveVector.x = _moveSpeed * direction.x;
+            var moveVector = Vector3.zero;
+            moveVector.x = MoveSpeed * direction.x;
             //_moveVector.z = _moveSpeed * direction.y;
-            _moveVector.y = _rigidbody.velocity.y;
+            moveVector.y = _rigidbody.velocity.y;
             var velocity = _rigidbody.velocity;
-            var _moveVector2D = new Vector2(_moveVector.x,_moveVector.y);
-            _rigidbody.AddForce(_moveForceMultiplier * (_moveVector2D - velocity));
+            var moveVector2D = new Vector2(moveVector.x, moveVector.y);
+            _rigidbody.AddForce(MoveForceMultiplier * (moveVector2D - velocity));
         }
     }
 }

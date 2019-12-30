@@ -1,0 +1,1497 @@
+fileFormatVersion: 2
+guid: 37426dfe5cfb14626a6e1c60f8d927eb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7611175139435793682
+    second: UnityChan_footwork_0
+  - first:
+      213: -2414899941940201763
+    second: UnityChan_footwork_1
+  - first:
+      213: 262641128833692197
+    second: UnityChan_footwork_2
+  - first:
+      213: -3678486818915674298
+    second: UnityChan_damage1_0
+  - first:
+      213: 1150918814309084964
+    second: UnityChan_damage2_0
+  - first:
+      213: 4742353339640682416
+    second: UnityChan_run_0
+  - first:
+      213: -1069406364372454524
+    second: UnityChan_run_1
+  - first:
+      213: -3216722775971202192
+    second: UnityChan_run_2
+  - first:
+      213: 4661362817575464510
+    second: UnityChan_run_3
+  - first:
+      213: -4665226109130300252
+    second: UnityChan_run_4
+  - first:
+      213: -1222260141884883289
+    second: UnityChan_run_5
+  - first:
+      213: 3354454724914323931
+    second: UnityChan_run_6
+  - first:
+      213: 3004384447465003941
+    second: UnityChan_run_7
+  - first:
+      213: 3823919914555822538
+    second: UnityChan_jump_up_0
+  - first:
+      213: 2720982409178628056
+    second: UnityChan_jump_up_1
+  - first:
+      213: 1588534504938359808
+    second: UnityChan_jump_top_0
+  - first:
+      213: -2063287051946429052
+    second: UnityChan_jump_top_1
+  - first:
+      213: 6962742172353944144
+    second: UnityChan_jump_top_2
+  - first:
+      213: 8391138659858060112
+    second: UnityChan_jump_down_0
+  - first:
+      213: -6513711549821746433
+    second: UnityChan_jump_down_1
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UnityChan_footwork_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -24}
+        - {x: 9, y: -22}
+        - {x: 6, y: -19}
+        - {x: 6, y: -17}
+        - {x: 8, y: -14}
+        - {x: 8, y: -9}
+        - {x: 11, y: -5}
+        - {x: 11, y: -2}
+        - {x: 7, y: 2}
+        - {x: 7, y: 5}
+        - {x: 9, y: 7}
+        - {x: 9, y: 8}
+        - {x: 8, y: 9}
+        - {x: 8, y: 12}
+        - {x: 2, y: 18}
+        - {x: -1, y: 18}
+        - {x: -3, y: 17}
+        - {x: -4, y: 18}
+        - {x: -7, y: 18}
+        - {x: -9, y: 16}
+        - {x: -10, y: 16}
+        - {x: -11, y: 17}
+        - {x: -14, y: 16}
+        - {x: -14, y: 14}
+        - {x: -10, y: 10}
+        - {x: -11, y: 8}
+        - {x: -11, y: 5}
+        - {x: -13, y: 2}
+        - {x: -16, y: -1}
+        - {x: -17, y: -4}
+        - {x: -17, y: -9}
+        - {x: -14, y: -12}
+        - {x: -14, y: -17}
+        - {x: -13, y: -18}
+        - {x: -13, y: -20}
+        - {x: -14, y: -21}
+        - {x: -12, y: -24}
+        - {x: -8, y: -23}
+        - {x: -6, y: -26}
+        - {x: -1, y: -26}
+        - {x: 0, y: -25}
+        - {x: 1, y: -26}
+        - {x: 7, y: -26}
+      tessellationDetail: 1
+      bones: []
+      spriteID: ee235a2598caf5690800000000000000
+      internalID: -7611175139435793682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_footwork_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -24}
+        - {x: 9, y: -22}
+        - {x: 6, y: -19}
+        - {x: 6, y: -17}
+        - {x: 8, y: -14}
+        - {x: 8, y: -9}
+        - {x: 11, y: -6}
+        - {x: 11, y: -3}
+        - {x: 7, y: 1}
+        - {x: 7, y: 4}
+        - {x: 9, y: 6}
+        - {x: 9, y: 7}
+        - {x: 8, y: 8}
+        - {x: 8, y: 11}
+        - {x: 2, y: 17}
+        - {x: -1, y: 17}
+        - {x: -3, y: 16}
+        - {x: -4, y: 17}
+        - {x: -7, y: 17}
+        - {x: -9, y: 15}
+        - {x: -10, y: 15}
+        - {x: -11, y: 16}
+        - {x: -14, y: 15}
+        - {x: -14, y: 13}
+        - {x: -10, y: 9}
+        - {x: -11, y: 7}
+        - {x: -11, y: 4}
+        - {x: -13, y: 1}
+        - {x: -16, y: -2}
+        - {x: -17, y: -5}
+        - {x: -17, y: -10}
+        - {x: -14, y: -13}
+        - {x: -14, y: -18}
+        - {x: -13, y: -19}
+        - {x: -13, y: -21}
+        - {x: -14, y: -22}
+        - {x: -12, y: -25}
+        - {x: -8, y: -24}
+        - {x: -6, y: -26}
+        - {x: -1, y: -26}
+        - {x: 0, y: -25}
+        - {x: 1, y: -26}
+        - {x: 7, y: -26}
+      tessellationDetail: 1
+      bones: []
+      spriteID: dd6fa882c4d8c7ed0800000000000000
+      internalID: -2414899941940201763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_footwork_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -24}
+        - {x: 9, y: -22}
+        - {x: 6, y: -19}
+        - {x: 6, y: -17}
+        - {x: 8, y: -14}
+        - {x: 8, y: -9}
+        - {x: 11, y: -6}
+        - {x: 11, y: -3}
+        - {x: 7, y: 1}
+        - {x: 7, y: 4}
+        - {x: 9, y: 6}
+        - {x: 9, y: 7}
+        - {x: 8, y: 8}
+        - {x: 8, y: 11}
+        - {x: 2, y: 17}
+        - {x: -1, y: 17}
+        - {x: -3, y: 16}
+        - {x: -4, y: 17}
+        - {x: -7, y: 17}
+        - {x: -9, y: 15}
+        - {x: -10, y: 15}
+        - {x: -11, y: 16}
+        - {x: -14, y: 15}
+        - {x: -14, y: 13}
+        - {x: -10, y: 9}
+        - {x: -11, y: 7}
+        - {x: -11, y: 4}
+        - {x: -13, y: 1}
+        - {x: -16, y: -2}
+        - {x: -17, y: -5}
+        - {x: -17, y: -10}
+        - {x: -14, y: -13}
+        - {x: -14, y: -18}
+        - {x: -13, y: -19}
+        - {x: -13, y: -21}
+        - {x: -14, y: -22}
+        - {x: -12, y: -25}
+        - {x: -8, y: -24}
+        - {x: -6, y: -26}
+        - {x: -1, y: -26}
+        - {x: 0, y: -25}
+        - {x: 1, y: -26}
+        - {x: 7, y: -26}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 5223a8317b615a300800000000000000
+      internalID: 262641128833692197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_damage1_0
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -1, y: -19}
+        - {x: -1, y: -23}
+        - {x: 2, y: -26}
+        - {x: 6, y: -26}
+        - {x: 8, y: -24}
+        - {x: 8, y: -22}
+        - {x: 6, y: -20}
+        - {x: 6, y: -18}
+        - {x: 8, y: -16}
+        - {x: 9, y: -17}
+        - {x: 12, y: -16}
+        - {x: 12, y: -14}
+        - {x: 8, y: -9}
+        - {x: 7, y: -8}
+        - {x: 9, y: -6}
+        - {x: 9, y: -3}
+        - {x: 7, y: 1}
+        - {x: 3, y: 3}
+        - {x: 3, y: 5}
+        - {x: 5, y: 7}
+        - {x: 5, y: 8}
+        - {x: 2, y: 12}
+        - {x: 1, y: 12}
+        - {x: -5, y: 17}
+        - {x: -9, y: 17}
+        - {x: -10, y: 18}
+        - {x: -12, y: 18}
+        - {x: -16, y: 14}
+        - {x: -20, y: 14}
+        - {x: -22, y: 12}
+        - {x: -21, y: 9}
+        - {x: -16, y: 8}
+        - {x: -16, y: 3}
+        - {x: -18, y: 1}
+        - {x: -21, y: 0}
+        - {x: -24, y: -4}
+        - {x: -24, y: -10}
+        - {x: -20, y: -15}
+        - {x: -16, y: -15}
+        - {x: -14, y: -17}
+        - {x: -11, y: -17}
+        - {x: -10, y: -16}
+        - {x: -9, y: -17}
+        - {x: -12, y: -20}
+        - {x: -12, y: -22}
+        - {x: -8, y: -26}
+        - {x: -5, y: -26}
+        - {x: -3, y: -24}
+        - {x: -3, y: -22}
+        - {x: -4, y: -21}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 64713974ab363fcc0800000000000000
+      internalID: -3678486818915674298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_damage2_0
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 1, y: -21}
+        - {x: 4, y: -24}
+        - {x: 7, y: -24}
+        - {x: 9, y: -22}
+        - {x: 9, y: -18}
+        - {x: 8, y: -17}
+        - {x: 8, y: -15}
+        - {x: 10, y: -14}
+        - {x: 11, y: -15}
+        - {x: 14, y: -14}
+        - {x: 14, y: -12}
+        - {x: 10, y: -8}
+        - {x: 9, y: -3}
+        - {x: 7, y: -1}
+        - {x: 11, y: 2}
+        - {x: 10, y: 4}
+        - {x: 11, y: 6}
+        - {x: 9, y: 10}
+        - {x: 9, y: 14}
+        - {x: 6, y: 18}
+        - {x: 5, y: 20}
+        - {x: 3, y: 20}
+        - {x: 1, y: 17}
+        - {x: -4, y: 22}
+        - {x: -6, y: 22}
+        - {x: -7, y: 19}
+        - {x: -5, y: 15}
+        - {x: -8, y: 13}
+        - {x: -10, y: 8}
+        - {x: -11, y: 6}
+        - {x: -12, y: 6}
+        - {x: -19, y: 0}
+        - {x: -20, y: -3}
+        - {x: -20, y: -8}
+        - {x: -11, y: -16}
+        - {x: -8, y: -16}
+        - {x: -7, y: -15}
+        - {x: -6, y: -16}
+        - {x: -6, y: -18}
+        - {x: -8, y: -20}
+        - {x: -8, y: -23}
+        - {x: -6, y: -25}
+        - {x: -2, y: -25}
+        - {x: 0, y: -23}
+        - {x: 0, y: -20}
+        - {x: 1, y: -19}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 42fe4345092e8ff00800000000000000
+      internalID: 1150918814309084964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_run_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 11, y: -12}
+        - {x: 10, y: -13}
+        - {x: 8, y: -11}
+        - {x: 8, y: -9}
+        - {x: 13, y: -5}
+        - {x: 13, y: -2}
+        - {x: 10, y: 1}
+        - {x: 7, y: 1}
+        - {x: 9, y: 3}
+        - {x: 9, y: 5}
+        - {x: 11, y: 7}
+        - {x: 11, y: 8}
+        - {x: 10, y: 9}
+        - {x: 10, y: 12}
+        - {x: 4, y: 18}
+        - {x: 1, y: 18}
+        - {x: -1, y: 17}
+        - {x: -2, y: 18}
+        - {x: -5, y: 18}
+        - {x: -7, y: 16}
+        - {x: -8, y: 16}
+        - {x: -9, y: 17}
+        - {x: -12, y: 16}
+        - {x: -12, y: 14}
+        - {x: -8, y: 10}
+        - {x: -8, y: 9}
+        - {x: -10, y: 8}
+        - {x: -13, y: 6}
+        - {x: -16, y: 6}
+        - {x: -19, y: 5}
+        - {x: -22, y: 1}
+        - {x: -23, y: -3}
+        - {x: -26, y: -5}
+        - {x: -27, y: -8}
+        - {x: -27, y: -12}
+        - {x: -23, y: -17}
+        - {x: -21, y: -17}
+        - {x: -20, y: -14}
+        - {x: -21, y: -13}
+        - {x: -20, y: -12}
+        - {x: -16, y: -11}
+        - {x: -16, y: -15}
+        - {x: -14, y: -17}
+        - {x: -13, y: -17}
+        - {x: -11, y: -20}
+        - {x: -9, y: -20}
+        - {x: -6, y: -17}
+        - {x: 0, y: -17}
+        - {x: 2, y: -15}
+        - {x: 4, y: -17}
+        - {x: 5, y: -17}
+        - {x: 9, y: -21}
+        - {x: 10, y: -21}
+        - {x: 15, y: -16}
+        - {x: 15, y: -14}
+        - {x: 13, y: -12}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 0b79ba08c3930d140800000000000000
+      internalID: 4742353339640682416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_run_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -17}
+        - {x: 8, y: -16}
+        - {x: 7, y: -11}
+        - {x: 12, y: -7}
+        - {x: 12, y: -4}
+        - {x: 9, y: -1}
+        - {x: 7, y: -1}
+        - {x: 11, y: 7}
+        - {x: 10, y: 8}
+        - {x: 10, y: 11}
+        - {x: 4, y: 18}
+        - {x: -2, y: 17}
+        - {x: -3, y: 18}
+        - {x: -8, y: 17}
+        - {x: -9, y: 18}
+        - {x: -12, y: 17}
+        - {x: -12, y: 15}
+        - {x: -8, y: 11}
+        - {x: -8, y: 10}
+        - {x: -11, y: 5}
+        - {x: -15, y: 5}
+        - {x: -18, y: 4}
+        - {x: -21, y: 0}
+        - {x: -24, y: 0}
+        - {x: -29, y: -3}
+        - {x: -30, y: -6}
+        - {x: -30, y: -9}
+        - {x: -27, y: -12}
+        - {x: -26, y: -12}
+        - {x: -24, y: -9}
+        - {x: -21, y: -11}
+        - {x: -21, y: -13}
+        - {x: -18, y: -14}
+        - {x: -17, y: -13}
+        - {x: -11, y: -14}
+        - {x: -10, y: -13}
+        - {x: -10, y: -14}
+        - {x: -11, y: -15}
+        - {x: -11, y: -17}
+        - {x: -9, y: -19}
+        - {x: -7, y: -19}
+        - {x: -4, y: -17}
+        - {x: -1, y: -19}
+        - {x: 2, y: -19}
+        - {x: 2, y: -21}
+        - {x: 5, y: -25}
+        - {x: 7, y: -25}
+        - {x: 12, y: -21}
+        - {x: 12, y: -19}
+        - {x: 10, y: -17}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 483b90bd394b821f0800000000000000
+      internalID: -1069406364372454524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_run_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 1, y: -20}
+        - {x: 3, y: -18}
+        - {x: 6, y: -18}
+        - {x: 11, y: -13}
+        - {x: 11, y: -12}
+        - {x: 8, y: -9}
+        - {x: 10, y: -6}
+        - {x: 10, y: -4}
+        - {x: 7, y: -1}
+        - {x: 9, y: 1}
+        - {x: 9, y: 3}
+        - {x: 11, y: 5}
+        - {x: 11, y: 6}
+        - {x: 10, y: 7}
+        - {x: 10, y: 10}
+        - {x: 4, y: 16}
+        - {x: 1, y: 16}
+        - {x: -1, y: 15}
+        - {x: -2, y: 16}
+        - {x: -5, y: 16}
+        - {x: -7, y: 14}
+        - {x: -8, y: 14}
+        - {x: -9, y: 15}
+        - {x: -12, y: 14}
+        - {x: -12, y: 12}
+        - {x: -9, y: 9}
+        - {x: -16, y: 2}
+        - {x: -19, y: 1}
+        - {x: -21, y: -1}
+        - {x: -22, y: -4}
+        - {x: -22, y: -8}
+        - {x: -24, y: -10}
+        - {x: -26, y: -8}
+        - {x: -27, y: -8}
+        - {x: -29, y: -10}
+        - {x: -29, y: -12}
+        - {x: -26, y: -16}
+        - {x: -23, y: -17}
+        - {x: -18, y: -17}
+        - {x: -16, y: -15}
+        - {x: -15, y: -15}
+        - {x: -13, y: -17}
+        - {x: -9, y: -17}
+        - {x: -8, y: -16}
+        - {x: -8, y: -23}
+        - {x: -6, y: -25}
+        - {x: -2, y: -25}
+        - {x: 0, y: -23}
+        - {x: 0, y: -21}
+        - {x: -1, y: -20}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 07bf35d9da7eb53d0800000000000000
+      internalID: -3216722775971202192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_run_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 1, y: -20}
+        - {x: 4, y: -23}
+        - {x: 6, y: -23}
+        - {x: 8, y: -21}
+        - {x: 8, y: -17}
+        - {x: 10, y: -14}
+        - {x: 11, y: -10}
+        - {x: 8, y: -7}
+        - {x: 10, y: -5}
+        - {x: 10, y: -2}
+        - {x: 8, y: 0}
+        - {x: 8, y: 1}
+        - {x: 11, y: 7}
+        - {x: 10, y: 8}
+        - {x: 10, y: 11}
+        - {x: 5, y: 16}
+        - {x: -5, y: 16}
+        - {x: -12, y: 9}
+        - {x: -12, y: 8}
+        - {x: -17, y: 4}
+        - {x: -21, y: -5}
+        - {x: -21, y: -9}
+        - {x: -20, y: -10}
+        - {x: -22, y: -12}
+        - {x: -23, y: -12}
+        - {x: -24, y: -11}
+        - {x: -27, y: -12}
+        - {x: -27, y: -14}
+        - {x: -24, y: -18}
+        - {x: -21, y: -19}
+        - {x: -17, y: -19}
+        - {x: -16, y: -18}
+        - {x: -15, y: -19}
+        - {x: -15, y: -21}
+        - {x: -13, y: -23}
+        - {x: -11, y: -23}
+        - {x: -7, y: -19}
+        - {x: -3, y: -18}
+        - {x: -1, y: -16}
+      tessellationDetail: 1
+      bones: []
+      spriteID: e3eacce19cc70b040800000000000000
+      internalID: 4661362817575464510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_run_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -12}
+        - {x: 12, y: -13}
+        - {x: 10, y: -11}
+        - {x: 9, y: -6}
+        - {x: 10, y: -5}
+        - {x: 10, y: -2}
+        - {x: 7, y: 1}
+        - {x: 9, y: 3}
+        - {x: 9, y: 5}
+        - {x: 11, y: 7}
+        - {x: 11, y: 8}
+        - {x: 10, y: 9}
+        - {x: 10, y: 12}
+        - {x: 4, y: 18}
+        - {x: 1, y: 18}
+        - {x: -1, y: 17}
+        - {x: -2, y: 18}
+        - {x: -5, y: 18}
+        - {x: -7, y: 16}
+        - {x: -9, y: 17}
+        - {x: -12, y: 16}
+        - {x: -12, y: 14}
+        - {x: -8, y: 10}
+        - {x: -8, y: 9}
+        - {x: -10, y: 8}
+        - {x: -13, y: 6}
+        - {x: -16, y: 6}
+        - {x: -19, y: 5}
+        - {x: -22, y: 1}
+        - {x: -23, y: -3}
+        - {x: -26, y: -5}
+        - {x: -27, y: -8}
+        - {x: -27, y: -12}
+        - {x: -23, y: -17}
+        - {x: -21, y: -17}
+        - {x: -20, y: -14}
+        - {x: -21, y: -13}
+        - {x: -20, y: -12}
+        - {x: -16, y: -11}
+        - {x: -16, y: -15}
+        - {x: -14, y: -17}
+        - {x: -13, y: -17}
+        - {x: -11, y: -20}
+        - {x: -9, y: -20}
+        - {x: -6, y: -17}
+        - {x: 0, y: -17}
+        - {x: 1, y: -16}
+        - {x: 5, y: -16}
+        - {x: 11, y: -21}
+        - {x: 12, y: -21}
+        - {x: 17, y: -16}
+        - {x: 17, y: -14}
+        - {x: 15, y: -12}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 4a429683299c14fb0800000000000000
+      internalID: -4665226109130300252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_run_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -17}
+        - {x: 8, y: -16}
+        - {x: 7, y: -10}
+        - {x: 9, y: -7}
+        - {x: 9, y: -4}
+        - {x: 7, y: 0}
+        - {x: 9, y: 2}
+        - {x: 9, y: 4}
+        - {x: 11, y: 6}
+        - {x: 11, y: 7}
+        - {x: 10, y: 8}
+        - {x: 10, y: 11}
+        - {x: 4, y: 18}
+        - {x: -2, y: 17}
+        - {x: -3, y: 18}
+        - {x: -8, y: 17}
+        - {x: -9, y: 18}
+        - {x: -12, y: 17}
+        - {x: -12, y: 15}
+        - {x: -8, y: 11}
+        - {x: -8, y: 10}
+        - {x: -11, y: 5}
+        - {x: -15, y: 5}
+        - {x: -18, y: 4}
+        - {x: -21, y: 0}
+        - {x: -24, y: 0}
+        - {x: -29, y: -3}
+        - {x: -30, y: -6}
+        - {x: -30, y: -9}
+        - {x: -27, y: -12}
+        - {x: -26, y: -12}
+        - {x: -24, y: -9}
+        - {x: -21, y: -11}
+        - {x: -21, y: -13}
+        - {x: -18, y: -14}
+        - {x: -17, y: -13}
+        - {x: -11, y: -14}
+        - {x: -10, y: -14}
+        - {x: -11, y: -15}
+        - {x: -11, y: -17}
+        - {x: -9, y: -19}
+        - {x: -7, y: -19}
+        - {x: -5, y: -17}
+        - {x: -3, y: -17}
+        - {x: -2, y: -18}
+        - {x: 1, y: -18}
+        - {x: 2, y: -19}
+        - {x: 2, y: -21}
+        - {x: 5, y: -25}
+        - {x: 7, y: -25}
+        - {x: 12, y: -21}
+        - {x: 12, y: -19}
+        - {x: 10, y: -17}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 7ae35d370e8a90fe0800000000000000
+      internalID: -1222260141884883289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_run_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 1, y: -19}
+        - {x: 5, y: -19}
+        - {x: 8, y: -16}
+        - {x: 8, y: -11}
+        - {x: 10, y: -9}
+        - {x: 10, y: -5}
+        - {x: 7, y: -2}
+        - {x: 7, y: -1}
+        - {x: 9, y: 1}
+        - {x: 9, y: 3}
+        - {x: 11, y: 5}
+        - {x: 11, y: 6}
+        - {x: 10, y: 7}
+        - {x: 10, y: 10}
+        - {x: 4, y: 16}
+        - {x: 1, y: 16}
+        - {x: -1, y: 15}
+        - {x: -2, y: 16}
+        - {x: -5, y: 16}
+        - {x: -7, y: 14}
+        - {x: -8, y: 14}
+        - {x: -9, y: 15}
+        - {x: -12, y: 14}
+        - {x: -12, y: 12}
+        - {x: -9, y: 9}
+        - {x: -16, y: 2}
+        - {x: -19, y: 1}
+        - {x: -21, y: -1}
+        - {x: -22, y: -4}
+        - {x: -22, y: -8}
+        - {x: -24, y: -10}
+        - {x: -26, y: -8}
+        - {x: -27, y: -8}
+        - {x: -29, y: -10}
+        - {x: -29, y: -12}
+        - {x: -26, y: -16}
+        - {x: -23, y: -17}
+        - {x: -18, y: -17}
+        - {x: -16, y: -15}
+        - {x: -15, y: -15}
+        - {x: -13, y: -17}
+        - {x: -9, y: -17}
+        - {x: -8, y: -16}
+        - {x: -8, y: -19}
+        - {x: -9, y: -20}
+        - {x: -9, y: -22}
+        - {x: -6, y: -25}
+        - {x: -2, y: -25}
+        - {x: 0, y: -23}
+        - {x: 0, y: -21}
+        - {x: -1, y: -20}
+      tessellationDetail: 1
+      bones: []
+      spriteID: bd126a5bcca6d8e20800000000000000
+      internalID: 3354454724914323931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_run_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -10}
+        - {x: 10, y: -10}
+        - {x: 13, y: -7}
+        - {x: 13, y: -4}
+        - {x: 10, y: -1}
+        - {x: 7, y: -1}
+        - {x: 11, y: 7}
+        - {x: 10, y: 8}
+        - {x: 10, y: 11}
+        - {x: 5, y: 16}
+        - {x: -5, y: 16}
+        - {x: -12, y: 9}
+        - {x: -12, y: 8}
+        - {x: -17, y: 4}
+        - {x: -21, y: -5}
+        - {x: -21, y: -9}
+        - {x: -20, y: -10}
+        - {x: -22, y: -12}
+        - {x: -24, y: -11}
+        - {x: -27, y: -12}
+        - {x: -27, y: -14}
+        - {x: -24, y: -18}
+        - {x: -21, y: -19}
+        - {x: -17, y: -19}
+        - {x: -14, y: -17}
+        - {x: -14, y: -20}
+        - {x: -12, y: -22}
+        - {x: -10, y: -22}
+        - {x: -6, y: -18}
+        - {x: -3, y: -18}
+        - {x: -1, y: -17}
+        - {x: 0, y: -21}
+        - {x: 3, y: -23}
+        - {x: 5, y: -23}
+        - {x: 7, y: -21}
+        - {x: 7, y: -17}
+        - {x: 9, y: -14}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 5ab1cdfacb7b1b920800000000000000
+      internalID: 3004384447465003941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_jump_up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 3, y: -19}
+        - {x: 5, y: -18}
+        - {x: 5, y: -14}
+        - {x: 10, y: -9}
+        - {x: 10, y: -6}
+        - {x: 8, y: -4}
+        - {x: 8, y: 1}
+        - {x: 11, y: 5}
+        - {x: 11, y: 6}
+        - {x: 13, y: 7}
+        - {x: 14, y: 10}
+        - {x: 14, y: 13}
+        - {x: 12, y: 18}
+        - {x: 7, y: 18}
+        - {x: 5, y: 16}
+        - {x: 4, y: 17}
+        - {x: -6, y: 17}
+        - {x: -13, y: 10}
+        - {x: -13, y: 9}
+        - {x: -10, y: 7}
+        - {x: -11, y: 3}
+        - {x: -16, y: -6}
+        - {x: -16, y: -10}
+        - {x: -14, y: -14}
+        - {x: -16, y: -17}
+        - {x: -16, y: -21}
+        - {x: -17, y: -23}
+        - {x: -15, y: -25}
+        - {x: -13, y: -25}
+        - {x: -12, y: -24}
+        - {x: -10, y: -24}
+        - {x: -8, y: -22}
+        - {x: -8, y: -25}
+        - {x: -5, y: -29}
+        - {x: -3, y: -29}
+        - {x: -1, y: -28}
+        - {x: 0, y: -25}
+        - {x: 0, y: -22}
+      tessellationDetail: 1
+      bones: []
+      spriteID: ac154acf6ea411530800000000000000
+      internalID: 3823919914555822538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_jump_up_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: -19}
+        - {x: 3, y: -19}
+        - {x: 5, y: -17}
+        - {x: 5, y: -14}
+        - {x: 10, y: -9}
+        - {x: 10, y: -6}
+        - {x: 8, y: -4}
+        - {x: 8, y: 1}
+        - {x: 11, y: 5}
+        - {x: 13, y: 7}
+        - {x: 14, y: 10}
+        - {x: 14, y: 13}
+        - {x: 12, y: 18}
+        - {x: 7, y: 18}
+        - {x: 5, y: 16}
+        - {x: 4, y: 17}
+        - {x: -6, y: 17}
+        - {x: -13, y: 10}
+        - {x: -13, y: 9}
+        - {x: -10, y: 7}
+        - {x: -12, y: 3}
+        - {x: -15, y: 0}
+        - {x: -17, y: -5}
+        - {x: -17, y: -10}
+        - {x: -15, y: -13}
+        - {x: -17, y: -15}
+        - {x: -17, y: -19}
+        - {x: -16, y: -22}
+        - {x: -11, y: -26}
+        - {x: -10, y: -26}
+        - {x: -8, y: -23}
+        - {x: -6, y: -29}
+        - {x: -3, y: -29}
+        - {x: -1, y: -28}
+        - {x: 0, y: -25}
+        - {x: 0, y: -22}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 8dfbd23b51fd2c520800000000000000
+      internalID: 2720982409178628056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_jump_top_0
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 4, y: -20}
+        - {x: 4, y: -17}
+        - {x: 10, y: -11}
+        - {x: 10, y: -8}
+        - {x: 8, y: -6}
+        - {x: 8, y: -1}
+        - {x: 14, y: 4}
+        - {x: 15, y: 7}
+        - {x: 15, y: 10}
+        - {x: 13, y: 15}
+        - {x: 8, y: 15}
+        - {x: 7, y: 14}
+        - {x: 3, y: 18}
+        - {x: 0, y: 18}
+        - {x: -1, y: 17}
+        - {x: -3, y: 18}
+        - {x: -6, y: 18}
+        - {x: -8, y: 16}
+        - {x: -10, y: 17}
+        - {x: -13, y: 16}
+        - {x: -13, y: 14}
+        - {x: -9, y: 10}
+        - {x: -11, y: 9}
+        - {x: -18, y: 6}
+        - {x: -23, y: 0}
+        - {x: -23, y: -7}
+        - {x: -22, y: -9}
+        - {x: -23, y: -10}
+        - {x: -23, y: -17}
+        - {x: -19, y: -21}
+        - {x: -17, y: -21}
+        - {x: -16, y: -18}
+        - {x: -17, y: -17}
+        - {x: -15, y: -16}
+        - {x: -10, y: -22}
+        - {x: -8, y: -22}
+        - {x: -8, y: -23}
+        - {x: -6, y: -27}
+        - {x: -3, y: -27}
+        - {x: -1, y: -26}
+        - {x: 1, y: -22}
+        - {x: 2, y: -22}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 00c4d4047bb9b0610800000000000000
+      internalID: 1588534504938359808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_jump_top_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 8, y: -3}
+        - {x: 13, y: 2}
+        - {x: 14, y: 6}
+        - {x: 12, y: 11}
+        - {x: 9, y: 11}
+        - {x: 9, y: 12}
+        - {x: 3, y: 18}
+        - {x: 0, y: 18}
+        - {x: -1, y: 17}
+        - {x: -3, y: 18}
+        - {x: -6, y: 18}
+        - {x: -8, y: 16}
+        - {x: -9, y: 16}
+        - {x: -10, y: 17}
+        - {x: -13, y: 16}
+        - {x: -13, y: 14}
+        - {x: -9, y: 10}
+        - {x: -11, y: 10}
+        - {x: -12, y: 9}
+        - {x: -14, y: 9}
+        - {x: -19, y: 7}
+        - {x: -24, y: 1}
+        - {x: -23, y: -13}
+        - {x: -22, y: -16}
+        - {x: -18, y: -19}
+        - {x: -16, y: -19}
+        - {x: -14, y: -17}
+        - {x: -15, y: -15}
+        - {x: -14, y: -13}
+        - {x: -13, y: -14}
+        - {x: -12, y: -17}
+        - {x: -9, y: -19}
+        - {x: -7, y: -18}
+        - {x: -7, y: -20}
+        - {x: -5, y: -23}
+        - {x: -2, y: -24}
+        - {x: 1, y: -24}
+        - {x: 3, y: -22}
+        - {x: 4, y: -18}
+        - {x: 8, y: -14}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 485f117ab5bbd53e0800000000000000
+      internalID: -2063287051946429052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_jump_top_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: -8}
+        - {x: 8, y: -7}
+        - {x: 8, y: -5}
+        - {x: 9, y: -5}
+        - {x: 14, y: 0}
+        - {x: 14, y: 4}
+        - {x: 9, y: 9}
+        - {x: 9, y: 12}
+        - {x: 3, y: 19}
+        - {x: -3, y: 18}
+        - {x: -4, y: 19}
+        - {x: -9, y: 18}
+        - {x: -10, y: 19}
+        - {x: -13, y: 18}
+        - {x: -13, y: 16}
+        - {x: -9, y: 12}
+        - {x: -11, y: 12}
+        - {x: -12, y: 11}
+        - {x: -14, y: 11}
+        - {x: -15, y: 10}
+        - {x: -19, y: 9}
+        - {x: -24, y: 5}
+        - {x: -25, y: 2}
+        - {x: -25, y: -4}
+        - {x: -23, y: -6}
+        - {x: -24, y: -7}
+        - {x: -24, y: -11}
+        - {x: -23, y: -13}
+        - {x: -24, y: -14}
+        - {x: -24, y: -16}
+        - {x: -22, y: -18}
+        - {x: -21, y: -18}
+        - {x: -15, y: -13}
+        - {x: -14, y: -10}
+        - {x: -14, y: -7}
+        - {x: -14, y: -11}
+        - {x: -13, y: -12}
+        - {x: -13, y: -14}
+        - {x: -14, y: -15}
+        - {x: -13, y: -18}
+        - {x: -10, y: -18}
+        - {x: -7, y: -15}
+        - {x: -7, y: -18}
+        - {x: -4, y: -21}
+        - {x: -2, y: -21}
+        - {x: -2, y: -23}
+        - {x: 1, y: -26}
+        - {x: 4, y: -26}
+        - {x: 6, y: -24}
+        - {x: 6, y: -20}
+        - {x: 9, y: -15}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 05ad9c59d11a0a060800000000000000
+      internalID: 6962742172353944144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_jump_down_0
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 7, y: -17}
+        - {x: 9, y: -13}
+        - {x: 9, y: -8}
+        - {x: 8, y: -7}
+        - {x: 14, y: -1}
+        - {x: 14, y: 3}
+        - {x: 11, y: 6}
+        - {x: 9, y: 6}
+        - {x: 10, y: 7}
+        - {x: 9, y: 9}
+        - {x: 9, y: 12}
+        - {x: 3, y: 19}
+        - {x: -3, y: 18}
+        - {x: -4, y: 19}
+        - {x: -9, y: 18}
+        - {x: -10, y: 19}
+        - {x: -13, y: 18}
+        - {x: -13, y: 16}
+        - {x: -9, y: 12}
+        - {x: -12, y: 10}
+        - {x: -14, y: 10}
+        - {x: -15, y: 9}
+        - {x: -19, y: 8}
+        - {x: -24, y: 4}
+        - {x: -25, y: 1}
+        - {x: -25, y: -5}
+        - {x: -23, y: -7}
+        - {x: -23, y: -11}
+        - {x: -21, y: -16}
+        - {x: -18, y: -18}
+        - {x: -15, y: -17}
+        - {x: -13, y: -13}
+        - {x: -14, y: -13}
+        - {x: -13, y: -15}
+        - {x: -9, y: -18}
+        - {x: -7, y: -17}
+        - {x: -4, y: -20}
+        - {x: -2, y: -20}
+        - {x: -1, y: -19}
+        - {x: -1, y: -21}
+        - {x: -2, y: -22}
+        - {x: -2, y: -26}
+        - {x: 1, y: -29}
+        - {x: 4, y: -29}
+        - {x: 6, y: -27}
+        - {x: 6, y: -20}
+        - {x: 7, y: -19}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 05313e92720537470800000000000000
+      internalID: 8391138659858060112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnityChan_jump_down_1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 7, y: -17}
+        - {x: 9, y: -13}
+        - {x: 9, y: -8}
+        - {x: 8, y: -7}
+        - {x: 14, y: -1}
+        - {x: 14, y: 3}
+        - {x: 11, y: 6}
+        - {x: 9, y: 6}
+        - {x: 10, y: 7}
+        - {x: 9, y: 9}
+        - {x: 9, y: 12}
+        - {x: 3, y: 19}
+        - {x: -3, y: 18}
+        - {x: -4, y: 19}
+        - {x: -9, y: 18}
+        - {x: -10, y: 19}
+        - {x: -13, y: 18}
+        - {x: -13, y: 16}
+        - {x: -9, y: 12}
+        - {x: -11, y: 12}
+        - {x: -12, y: 11}
+        - {x: -14, y: 11}
+        - {x: -15, y: 10}
+        - {x: -19, y: 9}
+        - {x: -24, y: 5}
+        - {x: -25, y: 2}
+        - {x: -25, y: -4}
+        - {x: -23, y: -6}
+        - {x: -24, y: -7}
+        - {x: -24, y: -11}
+        - {x: -23, y: -13}
+        - {x: -24, y: -14}
+        - {x: -24, y: -16}
+        - {x: -22, y: -18}
+        - {x: -21, y: -18}
+        - {x: -15, y: -13}
+        - {x: -14, y: -10}
+        - {x: -14, y: -7}
+        - {x: -14, y: -11}
+        - {x: -13, y: -12}
+        - {x: -13, y: -14}
+        - {x: -14, y: -15}
+        - {x: -13, y: -18}
+        - {x: -10, y: -18}
+        - {x: -7, y: -15}
+        - {x: -7, y: -17}
+        - {x: -4, y: -20}
+        - {x: -2, y: -20}
+        - {x: -1, y: -19}
+        - {x: -1, y: -21}
+        - {x: -2, y: -22}
+        - {x: -2, y: -26}
+        - {x: 1, y: -29}
+        - {x: 4, y: -29}
+        - {x: 6, y: -27}
+        - {x: 6, y: -20}
+        - {x: 7, y: -19}
+      tessellationDetail: 1
+      bones: []
+      spriteID: ff204874bd5aa95a0800000000000000
+      internalID: -6513711549821746433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 8bf7b3ebec59142b7a58076ee42b44e4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: UnityChan
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
