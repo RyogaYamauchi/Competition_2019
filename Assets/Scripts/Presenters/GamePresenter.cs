@@ -9,6 +9,7 @@ namespace Scripts.Presenters
         public static GamePresenter Instance { get; } = new GamePresenter();
         public InputPresenter InputPresenter { get; private set; }
         public IPlayerPresenter PlayerPresenter { get; private set; }
+        public IEnemyPresenter EnemyPresenter { get; private set; }
         public GameView GameView { get; private set; }
 
         private bool _isEnableInput;
@@ -18,7 +19,10 @@ namespace Scripts.Presenters
             GameView = gameView;
             PlayerPresenter = new PlayerPresenter(playerView);
             InputPresenter = new InputPresenter(inputManagerView);
+            EnemyPresenter = new EnemyPresenter();
             StartGame().Forget();
+            EnemyPresenter.SpawnEnemy(10,1);
+            
         }
 
         private async UniTask StartGame()

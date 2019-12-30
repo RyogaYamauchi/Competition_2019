@@ -1,5 +1,6 @@
 ﻿using Repository;
 using Scripts.Models;
+using Scripts.Views;
 using UniRx.Async;
 using UnityEngine;
 
@@ -36,10 +37,10 @@ public class WeaponView : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Target"))
+        if (other == null) return;
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("ターゲットにヒット");
-            Debug.Log(other.gameObject.name);
+            other.gameObject.GetComponent<EnemyView>().Damage(1);
         }
     }
 }

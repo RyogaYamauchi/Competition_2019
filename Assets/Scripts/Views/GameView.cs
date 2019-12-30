@@ -9,6 +9,7 @@ namespace Scripts.Views
         [SerializeField] private InputManagerView _inputManagerView = default;
 
         [SerializeField] private PlayerView _playerView = default;
+        [SerializeField] public GameObject EnemySpawnPoint = default;
 
 
         private void Awake()
@@ -16,6 +17,10 @@ namespace Scripts.Views
             DontDestroyOnLoad(this);
             GamePresenter.Instance.Init(this, _inputManagerView, _playerView);
         }
-        
+
+        public GameObject CreateGameObjectFromObject(Object obj)
+        {
+            return (GameObject) Instantiate(obj, EnemySpawnPoint.transform.position, Quaternion.identity);
+        }
     }
 }
