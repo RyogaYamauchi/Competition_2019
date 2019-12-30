@@ -1,5 +1,5 @@
+using Scripts.Models;
 using Scripts.Views;
-using UniRx.Async;
 using UnityEngine;
 
 namespace Scripts.Presenters
@@ -13,7 +13,7 @@ namespace Scripts.Presenters
             _inputManagerView = inputManagerView;
         }
 
-        public float GetInput()
+        public InputViewModel GetInput()
         {
             return _inputManagerView.GetInput();
         }

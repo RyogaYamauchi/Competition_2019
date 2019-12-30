@@ -292,17 +292,32 @@
             <e p="ViewBase.cs" t="Include" />
           </e>
           <e p="Models" t="Include">
+            <e p="AnimationEnum.cs" t="Include" />
+            <e p="EnemiesModel.cs" t="Include" />
+            <e p="EnemyModel.cs" t="Include" />
+            <e p="GameModel.cs" t="Include" />
+            <e p="InputModel.cs" t="Include" />
             <e p="PlayerModel.cs" t="Include" />
           </e>
           <e p="Presenters" t="Include">
+            <e p="EnemyPresenter.cs" t="Include" />
             <e p="GamePresenter.cs" t="Include" />
             <e p="InputPresenter.cs" t="Include" />
             <e p="PlayerPresenter.cs" t="Include" />
           </e>
+          <e p="Repository" t="Include">
+            <e p="AnimationRepository.cs" t="Include" />
+          </e>
+          <e p="ViewModels" t="Include">
+            <e p="EnemyViewModel.cs" t="Include" />
+            <e p="InputViewModel.cs" t="Include" />
+          </e>
           <e p="Views" t="Include">
+            <e p="EnemyView.cs" t="Include" />
             <e p="GameView.cs" t="Include" />
             <e p="InputManagerView.cs" t="Include" />
             <e p="PlayerView.cs" t="Include" />
+            <e p="WeaponView.cs" t="Include" />
           </e>
         </e>
         <e p="UniRx.Async" t="Include">

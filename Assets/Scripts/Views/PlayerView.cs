@@ -1,63 +1,137 @@
-using System;
 using Framework;
+using Repository;
+using Scripts.Models;
+using Scripts.Presenters;
 using UniRx.Async;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Scripts.Views
 {
     public class PlayerView : ViewBase
     {
-        [SerializeField] private Rigidbody _rigidbody = default;
-        [SerializeField] private Image _image;
+        [SerializeField] private Rigidbody2D _rigidbody = default;
+        [SerializeField] private WeaponView _weaponView = default;
+        [SerializeField] private SpriteRenderer _spriteRenderer = default;
 
-        private float _moveForceMultiplier = 50f;
-        private Vector3 _moveVector;
-        private float _moveSpeed = 20;
-        private Sprite[] _standingSprites;
-        private Sprite[] _walkingSprites;
-        private int _jumpPower = 10;
+        public IPlayerPresenter Presenter { get; private set; }
+
+        public float MoveForceMultiplier => Presenter.MoveForceMultiplier;
+        public float MoveSpeed => Presenter.MoveSpeed;
+        public float _jumpPower => Presenter.JumpPower;
+
+        private bool _isAnimating;
+
+
+        /// <summary>
+        /// Initialize
+        /// </summary>
+        /// <param name="presenter"></param>
+        public void Init(IPlayerPresenter presenter)
+        {
+            Presenter = presenter;
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
 
         private void Start()
         {
-            _standingSprites = Resources.LoadAll<Sprite>("Sprites/Player/Standing");
-            StandingAnimation().Forget();
+            AnimationStateMachine(AnimationEnum.PlayerIdling);
         }
 
-        private async UniTask StandingAnimation()
+        private void AnimationStateMachine(AnimationEnum animationEnum)
         {
-            var cnt = 0;
-            var max = _standingSprites.Length-1;
-            while (true)
+            if (_isAnimating) return;
+            switch (animationEnum)
             {
-                await UniTask.Delay(200);
-                _image.sprite = _standingSprites[cnt];
-                cnt++;
-                if (cnt > max) cnt = 0;
+                case AnimationEnum.PlayerAttack3:
+                    AttackAnimation().Forget();
+                    break;
+                case AnimationEnum.PlayerBlocking:
+                    Blocking();
+                    break;
+                case AnimationEnum.PlayerJumpming:
+                    Jump();
+                    break;
+                case AnimationEnum.PlayerWalking:
+                    break;
+                case AnimationEnum.PlayerIdling:
+                    IdlingAnimation().Forget();
+                    break;
             }
         }
 
-        public void SetPosition(Vector2 pos)
+        public void Jump()
         {
-            gameObject.transform.position = new Vector3(pos.x, pos.y, 0);
+            _rigidbody.AddForce(Vector2.up * _jumpPower);
+            AnimationStateMachine(AnimationEnum.PlayerIdling);
         }
+
+        public void Attack()
+        {
+            Debug.Log("Attack!!");
+            AnimationStateMachine(AnimationEnum.PlayerAttack3);
+        }
+
+        public void Blocking()
+        {
+            AnimationStateMachine(AnimationEnum.PlayerBlocking);
+        }
+
+        private async UniTask IdlingAnimation()
+        {
+            if (_isAnimating) return;
+            var standingSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerIdling);
+            var cnt = 0;
+            var max = standingSprites.Length - 1;
+            while (true)
+            {
+                await UniTask.Delay(200);
+                _spriteRenderer.sprite = standingSprites[cnt];
+                cnt++;
+                if (cnt > max)
+                {
+                    AnimationStateMachine(AnimationEnum.PlayerIdling);
+                    break;
+                }
+            }
+        }
+
+
+        private async UniTask AttackAnimation()
+        {
+            _weaponView.gameObject.SetActive(true);
+            _weaponView.PlayAttackAnimation().Forget();
+            var attackSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerAttack3);
+            _isAnimating = true;
+
+            var max = attackSprites.Length;
+            for (int i = 0;
+                i < max;
+                i++)
+            {
+                _spriteRenderer.sprite = attackSprites[i];
+                await UniTask.Delay(50);
+            }
+
+            _isAnimating = false;
+            AnimationStateMachine(AnimationEnum.PlayerIdling);
+        }
+
 
         public Vector3 GetPosition()
         {
             return gameObject.transform.position;
         }
 
-        public void Move(float direction)
+        public void Move(Vector2 direction)
         {
-            _moveVector = Vector3.zero;
-            _moveVector.x = _moveSpeed * direction;
-            var velocity = _rigidbody.velocity;
-            _rigidbody.AddForce(_moveForceMultiplier * (_moveVector - velocity));
-        }
+            var moveVector = Vector3.zero;
+            moveVector.x = MoveSpeed * direction.x;
 
-        public void Jump()
-        {
-            _rigidbody.AddForce(Vector3.up*_jumpPower);
+            //_moveVector.z = _moveSpeed * direction.y;
+            moveVector.y = _rigidbody.velocity.y;
+            var velocity = _rigidbody.velocity;
+            var moveVector2D = new Vector2(moveVector.x, moveVector.y);
+            _rigidbody.AddForce(MoveForceMultiplier * (moveVector2D - velocity));
         }
     }
 }
