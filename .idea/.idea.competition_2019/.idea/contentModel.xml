@@ -329,6 +329,148 @@
             <e p="WeaponView.cs" t="Include" />
           </e>
         </e>
+        <e p="SpriteStudio6" t="Include">
+          <e p="Documents" t="Include">
+            <e p="BatchImporter" t="Include">
+              <e p="List_BatchImporter.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Editor" t="Include">
+            <e p="Import" t="Include">
+              <e p="Batch.cs" t="Include" />
+              <e p="Setting.cs" t="Include" />
+              <e p="SSAE.cs" t="Include" />
+              <e p="SSCE.cs" t="Include" />
+              <e p="SSEE.cs" t="Include" />
+              <e p="SSPJ.cs" t="Include" />
+            </e>
+            <e p="Inspector" t="Include">
+              <e p="Inspector_SpriteStudio6_Collider.cs" t="Include" />
+              <e p="Inspector_SpriteStudio6_ControlPrefab.cs" t="Include" />
+              <e p="Inspector_SpriteStudio6_DataAnimation.cs" t="Include" />
+              <e p="Inspector_SpriteStudio6_DataCellMap.cs" t="Include" />
+              <e p="Inspector_SpriteStudio6_DataEffect.cs" t="Include" />
+              <e p="Inspector_SpriteStudio6_Root.cs" t="Include" />
+              <e p="Inspector_SpriteStudio6_RootEffect.cs" t="Include" />
+            </e>
+            <e p="LibraryEditor_SpriteStudio6.cs" t="Include" />
+            <e p="Tools" t="Include">
+              <e p="About.cs" t="Include" />
+              <e p="Importer.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Library" t="Include">
+            <e p="Control" t="Include">
+              <e p="AnimationParts.cs" t="Include" />
+              <e p="AnimationTrack.cs" t="Include" />
+              <e p="Effect.cs" t="Include" />
+            </e>
+            <e p="Data" t="Include">
+              <e p="Animation" t="Include">
+                <e p="Attribute.cs" t="Include" />
+                <e p="AttributeImporter.cs" t="Include" />
+                <e p="PackAttribute_Codec" t="Include">
+                  <e p="CPE_Fiyweifgt.cs" t="Include" />
+                  <e p="CPE_Interpolate.cs" t="Include" />
+                  <e p="StandardCPE.cs" t="Include" />
+                  <e p="StandardUncompressed.cs" t="Include" />
+                </e>
+                <e p="PackAttributeContainer.cs" t="Include" />
+                <e p="PackAttributeFunction.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Library_SpriteStudio6.cs" t="Include" />
+            <e p="Utility" t="Include">
+              <e p="Random" t="Include">
+                <e p="MersenneTwister.cs" t="Include" />
+                <e p="XorShift32.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Script" t="Include">
+            <e p="Root" t="Include">
+              <e p="FunctionAnimation.cs" t="Include" />
+              <e p="FunctionCell.cs" t="Include" />
+              <e p="FunctionMaterial.cs" t="Include" />
+              <e p="FunctionMisc.cs" t="Include" />
+              <e p="FunctionParts.cs" t="Include" />
+              <e p="FunctionTrack.cs" t="Include" />
+            </e>
+            <e p="RootEffect" t="Include">
+              <e p="FunctionAnimation.cs" t="Include" />
+              <e p="FunctionCell.cs" t="Include" />
+              <e p="FunctionMaterial.cs" t="Include" />
+            </e>
+            <e p="Script_SpriteStudio6_Collider.cs" t="Include" />
+            <e p="Script_SpriteStudio6_ControlPrefab.cs" t="Include" />
+            <e p="Script_SpriteStudio6_DataAnimation.cs" t="Include" />
+            <e p="Script_SpriteStudio6_DataCellMap.cs" t="Include" />
+            <e p="Script_SpriteStudio6_DataEffect.cs" t="Include" />
+            <e p="Script_SpriteStudio6_HolderAssetUnityNative.cs" t="Include" />
+            <e p="Script_SpriteStudio6_PartsUnityNative.cs" t="Include" />
+            <e p="Script_SpriteStudio6_Root.cs" t="Include" />
+            <e p="Script_SpriteStudio6_RootEffect.cs" t="Include" />
+            <e p="Script_SpriteStudio6_RootUnityNative.cs" t="Include" />
+          </e>
+          <e p="Shader" t="Include">
+            <e p="Base" t="Include">
+              <e p="Shader_Data_SpriteStudio6.cginc" t="Include" />
+              <e p="Shader_Data_UnityNative.cginc" t="Include" />
+              <e p="ShaderPixel_Effect_SpriteStudio6.cginc" t="Include" />
+              <e p="ShaderPixel_Sprite_SpriteStudio6.cginc" t="Include" />
+              <e p="ShaderPixel_Sprite_UnityNative.cginc" t="Include" />
+              <e p="ShaderPixel_Stencil_SpriteStudio6.cginc" t="Include" />
+              <e p="ShaderVertex_Effect_SpriteStudio6.cginc" t="Include" />
+              <e p="ShaderVertex_SkinnedMesh_UnityNative.cginc" t="Include" />
+              <e p="ShaderVertex_Sprite_SpriteStudio6.cginc" t="Include" />
+              <e p="ShaderVertex_Sprite_UnityNative.cginc" t="Include" />
+            </e>
+            <e p="Effect_SpriteStudio6.shader" t="Include" />
+            <e p="SkinnedMesh_UnityNative.shader" t="Include" />
+            <e p="Sprite_SpriteStudio6.shader" t="Include" />
+            <e p="Sprite_UnityNative.shader" t="Include" />
+            <e p="Sprite_UnityNative_NonBatch.shader" t="Include" />
+            <e p="Stencil_SpriteStudio6.shader" t="Include" />
+          </e>
+        </e>
+        <e p="SpriteStudio6Sample" t="Include">
+          <e p="Benchmark" t="Include">
+            <e p="List_BatchImporter.txt" t="Include" />
+            <e p="Script" t="Include">
+              <e p="Script_Sample_Benchmark_SS6PlayerPlay.cs" t="Include" />
+              <e p="Script_Sample_Benchmark_SwitchSSPlayer.cs" t="Include" />
+              <e p="Script_Sample_Benchmark_UnityNativePlay.cs" t="Include" />
+            </e>
+            <e p="SpriteStudioProject" t="Include">
+              <e p="SS6PU_ImportSetting.txt" t="Include" />
+            </e>
+          </e>
+          <e p="BitmapFontNumeric" t="Include">
+            <e p="List_BatchImporter.txt" t="Include" />
+            <e p="Script" t="Include">
+              <e p="Script_Sample_CounterComplex.cs" t="Include" />
+              <e p="Script_Sample_CounterSimple.cs" t="Include" />
+            </e>
+            <e p="SpriteStudioProject" t="Include">
+              <e p="SS6PU_ImportSetting.txt" t="Include" />
+            </e>
+          </e>
+          <e p="DebugFrameByFrame" t="Include">
+            <e p="Script" t="Include">
+              <e p="Script_SpriteStudio6_DebugFrameByFrame.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Doll" t="Include">
+            <e p="List_BatchImporter.txt" t="Include" />
+            <e p="Script" t="Include">
+              <e p="Script_Sample_DollRun.cs" t="Include" />
+              <e p="Script_Sample_DollTrick.cs" t="Include" />
+            </e>
+            <e p="SpriteStudioProject" t="Include">
+              <e p="SS6PU_ImportSetting.txt" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="UniRx.Async" t="Include">
           <e p="AsyncUnit.cs" t="Include" />
           <e p="CancellationTokenEqualityComparer.cs" t="Include" />
