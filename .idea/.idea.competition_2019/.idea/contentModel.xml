@@ -298,6 +298,8 @@
             <e p="GameModel.cs" t="Include" />
             <e p="InputModel.cs" t="Include" />
             <e p="PlayerModel.cs" t="Include" />
+            <e p="TalkModel.cs" t="Include" />
+            <e p="UIModel.cs" t="Include" />
           </e>
           <e p="Presenters" t="Include">
             <e p="CameraPresenter.cs" t="Include" />
@@ -305,13 +307,17 @@
             <e p="GamePresenter.cs" t="Include" />
             <e p="InputPresenter.cs" t="Include" />
             <e p="PlayerPresenter.cs" t="Include" />
+            <e p="UIPresenter.cs" t="Include" />
           </e>
           <e p="Repository" t="Include">
             <e p="AnimationRepository.cs" t="Include" />
+            <e p="CharacterRepository.cs" t="Include" />
+            <e p="TalkRepository.cs" t="Include" />
           </e>
           <e p="ViewModels" t="Include">
             <e p="EnemyViewModel.cs" t="Include" />
             <e p="InputViewModel.cs" t="Include" />
+            <e p="TalkViewModel.cs" t="Include" />
           </e>
           <e p="Views" t="Include">
             <e p="CameraManagerView.cs" t="Include" />
@@ -319,6 +325,7 @@
             <e p="GameView.cs" t="Include" />
             <e p="InputManagerView.cs" t="Include" />
             <e p="PlayerView.cs" t="Include" />
+            <e p="UIManagerView.cs" t="Include" />
             <e p="WeaponView.cs" t="Include" />
           </e>
         </e>

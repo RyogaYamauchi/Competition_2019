@@ -14,8 +14,21 @@ namespace Scripts.Views
             _horizontalInput = Input.GetAxis("Horizontal");
             _verticalInput = Input.GetAxis("Vertical");
             var direction = new Vector2(_horizontalInput,_verticalInput);
+            var input = Input.inputString;
+            if (Input.GetKeyDown("o"))
+            {
+                input = "o";
+            }
+            else if (Input.GetKeyDown("f"))
+            {
+                input = "f";
+            }
+            else if (Input.GetKeyDown("c"))
+            {
+                input = "c";
+            }
             
-            return new InputViewModel(Input.inputString,direction);
+            return new InputViewModel(input,direction);
         }
 
         public bool GetJump()

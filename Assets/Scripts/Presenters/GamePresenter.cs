@@ -1,3 +1,4 @@
+using System;
 using Scripts.Views;
 using UniRx.Async;
 using UnityEngine;
@@ -11,37 +12,35 @@ namespace Scripts.Presenters
         public IPlayerPresenter PlayerPresenter { get; private set; }
         public IEnemyPresenter EnemyPresenter { get; private set; }
         public ICameraPresenter CameraPresenter { get; private set; }
+        public IUIPresenter UIPresenter { get; private set; }
         public GameView GameView { get; private set; }
+        public bool IsEnableInput => InputPresenter.IsEnableInput;
 
-        private bool _isEnableInput;
 
-        public void Init(GameView gameView, InputManagerView inputManagerView, PlayerView playerView,CameraManagerView cameraManagerView)
+        public async void Init(GameView gameView, InputManagerView inputManagerView, PlayerView playerView,
+            CameraManagerView cameraManagerView, UIManagerView uiManagerView)
         {
             GameView = gameView;
             PlayerPresenter = new PlayerPresenter(playerView);
             InputPresenter = new InputPresenter(inputManagerView);
             EnemyPresenter = new EnemyPresenter();
             CameraPresenter = new CameraPresenter(cameraManagerView);
-            StartGame().Forget();
-            EnemyPresenter.SpawnEnemy(10,1);
-            
+            UIPresenter = new UIPresenter(uiManagerView);
+            await LoadTalkAsync(StartGame, 1);
+
+            EnemyPresenter.SpawnEnemy(10, 1);
         }
 
-        private async UniTask StartGame()
+        private void StartGame()
         {
             Debug.Log("GameStart!!");
-            SetEnableInput(true);
-            while (_isEnableInput)
-            {
-                var inputViewModel = InputPresenter.GetInput();
-                PlayerPresenter.GetInput(inputViewModel);
-                await UniTask.DelayFrame(1);
-            }
+            PlayerPresenter.GetInput();
+            CameraPresenter.IsEnableMove = true;
         }
 
-        public void SetEnableInput(bool enable)
+        public async UniTask LoadTalkAsync(Action callback, int id)
         {
-            _isEnableInput = enable;
+            await UIPresenter.Open(callback, id);
         }
     }
 }

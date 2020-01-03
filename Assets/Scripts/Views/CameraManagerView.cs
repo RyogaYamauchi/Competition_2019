@@ -17,6 +17,7 @@ namespace Scripts.Views
 
         public async UniTask UpdatePos()
         {
+            if (!Presenter.IsEnableMove) return;
             Vector2 playerPos = PlayerModel.GetPosition();
             Vector2 pos;
             while (true)
