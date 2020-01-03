@@ -9,15 +9,7 @@ namespace Scripts.Presenters
     {
         private InputManagerView _view;
         public bool IsEnableInput { get; private set; } = true;
-
-        public async UniTask<InputViewModel> Start()
-        {
-            while (!IsEnableInput)
-            {
-                await UniTask.DelayFrame(1);
-            }
-            return GetInput();
-        }
+        
 
         public InputPresenter(InputManagerView view)
         {
@@ -29,18 +21,18 @@ namespace Scripts.Presenters
             return _view.GetInput();
         }
 
-        public async UniTask<string> GetInputStringAsync(string need)
+        public async UniTask<bool> IsInputAsync(string need)
         {
             while (IsEnableInput)
             {
                 await UniTask.DelayFrame(1);
-                if (Input.inputString.Equals(need))
+                if (_view.IsInput(need))
                 {
-                    
-                    return Input.inputString;
+                    return true;
                 }
             }
-            return null;
+
+            return false;
         }
 
         public bool GetJump()

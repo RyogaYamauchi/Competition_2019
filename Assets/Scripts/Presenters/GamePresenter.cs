@@ -36,6 +36,7 @@ namespace Scripts.Presenters
             Debug.Log("GameStart!!");
             PlayerPresenter.GetInput();
             CameraPresenter.IsEnableMove = true;
+            CameraPresenter.UpdatePos();
         }
 
         public async UniTask LoadTalkAsync(Action callback, int id)

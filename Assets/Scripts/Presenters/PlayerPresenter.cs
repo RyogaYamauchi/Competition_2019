@@ -61,7 +61,6 @@ namespace Scripts.Presenters
         {
             while (true)
             {
-                await UniTask.DelayFrame(1);
                 var viewModel = InputPresenter.GetInput();
                 var direction = viewModel.GetDirection();
                 var inputString = viewModel.GetInput();
@@ -75,6 +74,7 @@ namespace Scripts.Presenters
                         break;
                 }
                 Move(direction);
+                await UniTask.DelayFrame(1);
             }
         }
 

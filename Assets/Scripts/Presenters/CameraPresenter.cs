@@ -6,6 +6,7 @@ namespace Scripts.Presenters
     public interface ICameraPresenter
     {
         bool IsEnableMove { get; set; }
+        void UpdatePos();
     }
     public class CameraPresenter : ICameraPresenter
     {
@@ -15,7 +16,11 @@ namespace Scripts.Presenters
         {
             CameraManagerView = cameraManagerView;
             cameraManagerView.Init(this);
-            cameraManagerView.UpdatePos().Forget();
+        }
+
+        public void UpdatePos()
+        {
+            CameraManagerView.UpdatePos().Forget();
         }
     }
 }

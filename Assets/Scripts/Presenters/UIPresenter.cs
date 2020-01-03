@@ -52,12 +52,16 @@ namespace Scripts.Presenters
 
         public async void GetInput()
         {
-            var inputString = await InputPresenter.GetInputStringAsync("o");
-            if (inputString == null) return;
-            if (inputString.Equals("o"))
+            var input = await InputPresenter.IsInputAsync("o");
+            if (input)
             {
                 View.GoAction();
+                if (View.GetTalkCount > 0)
+                {
+                    GetInput();
+                }
             }
+            
         }
 
         public void Show()

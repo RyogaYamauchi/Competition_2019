@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Scripts.Presenters;
+using UniRx.Async;
 using UnityEngine;
 using UnityEngine.UI;
 using ViewModels;
@@ -17,8 +18,11 @@ namespace Scripts.Views
         private TalkViewModel[] _talkModels;
         private int _current = 0;
         private Action _callback;
+        public bool IsAnimation { get; private set; }
+        public bool Skip;
 
         public IUIPresenter Presenter { get; private set; }
+        public int GetTalkCount => _talkModels.Length;
 
         public void Init(IUIPresenter presenter)
         {
@@ -31,13 +35,31 @@ namespace Scripts.Views
             _callback = callback;
         }
 
-        public void UpdateView(TalkViewModel talkViewModel)
+        public async void UpdateView(TalkViewModel talkViewModel)
         {
-            _main.text = talkViewModel.MainText;
             _characterName.text = talkViewModel.CharacterName;
             _characterImage.sprite = Presenter.LoadSprite(talkViewModel.CharacterID);
             _current++;
-            
+            await MainTextAnimation(talkViewModel.MainText);
+        }
+
+        private async UniTask MainTextAnimation(string text)
+        {
+            var current = "";
+            IsAnimation = true;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (Skip)
+                {
+                    _main.text = text;
+                    IsAnimation = false;
+                    break;
+                }
+                current += text[i];
+                _main.text = current;
+                await UniTask.DelayFrame(5);
+            }
+            IsAnimation = false;
         }
 
         public void GoAction()
@@ -47,11 +69,17 @@ namespace Scripts.Views
                 Finish();
                 return;
             }
-            UpdateView(_talkModels[_current]);
-            if (_talkModels.Length > 0)
+
+            if (IsAnimation)
             {
-                Presenter.GetInput();
+                Skip = true;
             }
+            else
+            {
+                Skip = false;
+                UpdateView(_talkModels[_current]);
+            }
+            
         }
 
         public void Finish()
@@ -59,5 +87,6 @@ namespace Scripts.Views
             _callback?.Invoke();
             gameObject.SetActive(false);
         }
+
     }
 }
