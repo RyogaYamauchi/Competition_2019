@@ -1,5 +1,6 @@
 using Scripts.Models;
 using Scripts.Views;
+using UniRx.Async;
 using UnityEngine;
 
 namespace Scripts.Presenters
@@ -10,20 +11,25 @@ namespace Scripts.Presenters
         float MoveForceMultiplier { get; }
         float MoveSpeed { get; }
         float JumpPower { get; }
+        int Direction { get; }
         void Move(Vector2 direction);
         void Jump();
         void Attack();
-        void GetInput(InputViewModel inputViewModel);
+        void GetInput();
+        void UpdatePos(Vector3 transformPosition);
     }
 
     public class PlayerPresenter : IPlayerPresenter
     {
         private PlayerView _playerView = default;
-        public IPlayerModel PlayerModel { get; } = new PlayerModel();
+        public IPlayerModel PlayerModel => GameModel.Instance.PlayerModel;
+
+        public InputPresenter InputPresenter => GamePresenter.Instance.InputPresenter;
 
         public float MoveForceMultiplier => PlayerModel.MoveForceMultiplier;
         public float MoveSpeed => PlayerModel.MoveSpeed;
         public float JumpPower => PlayerModel.JumpPower;
+        public int Direction => PlayerModel.Direction;
 
         public PlayerPresenter(PlayerView playerView)
         {
@@ -53,21 +59,31 @@ namespace Scripts.Presenters
             _playerView.Attack();
         }
 
-        public void GetInput(InputViewModel inputViewModel)
+        public async void GetInput()
         {
-            var direction = inputViewModel.GetDirection();
-            var inputString = inputViewModel.GetInput();
-            switch (inputString)
+            while (true)
             {
-                case "c":
-                    Jump();
-                    break;
-                case "f":
-                    Attack();
-                    break;
-            }
+                var viewModel = InputPresenter.GetInput();
+                var direction = viewModel.GetDirection();
+                var inputString = viewModel.GetInput();
+                switch (inputString)
+                {
+                    case "c":
+                        Jump();
+                        break;
+                    case "f":
+                        Attack();
+                        break;
+                }
 
-            Move(direction);
+                Move(direction);
+                await UniTask.DelayFrame(1);
+            }
+        }
+
+        public void UpdatePos(Vector3 transformPosition)
+        {
+            PlayerModel.UpdatePos(transformPosition);
         }
     }
 }

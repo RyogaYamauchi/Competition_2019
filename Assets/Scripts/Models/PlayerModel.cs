@@ -7,9 +7,11 @@ namespace Scripts.Models
         float MoveForceMultiplier { get; }
         float MoveSpeed { get; }
         float JumpPower { get; }
+        int Direction { get; }
         void SetPosition(Vector2 position);
         void SetPosition(float x, float y);
         Vector2 GetPosition();
+        void UpdatePos(Vector3 pos);
     }
 
     public class PlayerModel : IPlayerModel
@@ -18,7 +20,9 @@ namespace Scripts.Models
 
         public float MoveForceMultiplier { get; private set; } = 5f;
         public float MoveSpeed { get; private set; } = 5;
-        public float JumpPower { get; private set; } = 100;
+        public float JumpPower { get; private set; } = 200;
+
+        public int Direction { get; private set; }
 
         public void SetMoveForceMultiplier(float num)
         {
@@ -48,6 +52,12 @@ namespace Scripts.Models
         public Vector2 GetPosition()
         {
             return _position;
+        }
+
+        public void UpdatePos(Vector3 pos)
+        {
+            Direction = _position.x < pos.x ? -1 : 1;
+            _position = new Vector2(pos.x, pos.y);
         }
     }
 }
