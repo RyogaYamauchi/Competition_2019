@@ -1,8 +1,6 @@
 using Framework;
-using Repository;
 using Scripts.Models;
 using Scripts.Presenters;
-using UniRx.Async;
 using UnityEngine;
 
 namespace Scripts.Views
@@ -10,8 +8,11 @@ namespace Scripts.Views
     public class PlayerView : ViewBase
     {
         [SerializeField] private Rigidbody2D _rigidbody = default;
-        [SerializeField] private WeaponView _weaponView = default;
-        [SerializeField] private SpriteRenderer _spriteRenderer = default;
+        [SerializeField] private Object _idolingAnimationPrefab;
+        [SerializeField] private Object _walkAnimationPrefab;
+        [SerializeField] private Object _attackAnimationPrefab;
+        [SerializeField] private Object _jumpAnimationPrefab;
+        [SerializeField] private Object pos;
 
         public IPlayerPresenter Presenter { get; private set; }
 
@@ -20,6 +21,16 @@ namespace Scripts.Views
         public float _jumpPower => Presenter.JumpPower;
 
         private bool _isAnimating;
+        private AnimationEnum _animationEnum = AnimationEnum.PlayerIdling;
+        private Script_SpriteStudio6_Root _idolingspriteStudioRoot;
+        private Script_SpriteStudio6_Root _walkSpriteStudioRoot;
+        private Script_SpriteStudio6_Root _jumpSpriteStudioRoot;
+        private Script_SpriteStudio6_Root _attackSpriteStudioRoot;
+
+        private GameObject _idlingGameObject;
+        private GameObject _AttackGameObject;
+        private GameObject _walkGameObject;
+        private GameObject _jumpGameObject;
 
 
         /// <summary>
@@ -30,11 +41,60 @@ namespace Scripts.Views
         {
             Presenter = presenter;
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            var instance = CreateGameObjectFromObject(_idolingAnimationPrefab, (GameObject) pos);
+            _idolingspriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
+            _idolingspriteStudioRoot.AnimationStop(-1);
+            _idlingGameObject = instance;
+            instance = CreateGameObjectFromObject(_walkAnimationPrefab, (GameObject) pos);
+            _walkSpriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
+            _walkSpriteStudioRoot.AnimationStop(-1);
+            instance.gameObject.SetActive(false);
+            _walkGameObject = instance;
+            instance = CreateGameObjectFromObject(_jumpAnimationPrefab, (GameObject) pos);
+            _jumpSpriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
+            _jumpSpriteStudioRoot.AnimationStop(-1);
+            instance.gameObject.SetActive(false);
+            _jumpGameObject = instance;
+
+            instance = CreateGameObjectFromObject(_attackAnimationPrefab, (GameObject) pos);
+            _attackSpriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
+            _attackSpriteStudioRoot.AnimationStop(-1);
+            instance.gameObject.SetActive(false);
+            _AttackGameObject = instance;
         }
 
-        private void Start()
+        private void Update()
         {
-            AnimationStateMachine(AnimationEnum.PlayerIdling);
+            if (_isAnimating) return;
+            if (_rigidbody.velocity.y < -0.01 || _rigidbody.velocity.y > 0.01)
+            {
+                if (_animationEnum == AnimationEnum.PlayerJump) return;
+                JumpAnimation();
+                return;
+            }
+
+            if (_rigidbody.velocity.x < -0.01 || _rigidbody.velocity.x > 0.01)
+            {
+                if (_animationEnum == AnimationEnum.PlayerWalking) return;
+                WalkingAnimation();
+                return;
+            }
+
+            _idlingGameObject.SetActive(true);
+            _jumpGameObject.SetActive(false);
+            _walkGameObject.SetActive(false);
+            if (_animationEnum == AnimationEnum.PlayerIdling) return;
+
+            if (Presenter.Direction == 1)
+            {
+                _animationEnum = AnimationEnum.PlayerIdling;
+                IdlingRightAnimation();
+            }
+            else
+            {
+                _animationEnum = AnimationEnum.PlayerIdling;
+                IdlingLeftAnimation();
+            }
         }
 
         private void AnimationStateMachine(AnimationEnum animationEnum)
@@ -42,21 +102,76 @@ namespace Scripts.Views
             if (_isAnimating) return;
             switch (animationEnum)
             {
-                case AnimationEnum.PlayerAttack3:
-                    AttackAnimation().Forget();
-                    break;
-                case AnimationEnum.PlayerBlocking:
-                    Blocking();
-                    break;
-                case AnimationEnum.PlayerJumpming:
-                    Jump();
-                    break;
-                case AnimationEnum.PlayerWalking:
-                    break;
-                case AnimationEnum.PlayerIdling:
-                    IdlingAnimation().Forget();
+                case AnimationEnum.PlayerAttack1:
+                    _AttackGameObject.SetActive(true);
+                    _idlingGameObject.SetActive(false);
+                    _walkGameObject.SetActive(false);
+                    _jumpGameObject.SetActive(false);
+                    AttackAnimation();
                     break;
             }
+        }
+
+        private void JumpAnimation()
+        {
+            _animationEnum = AnimationEnum.PlayerJump;
+            _walkGameObject.SetActive(false);
+            _idlingGameObject.SetActive(false);
+            _jumpGameObject.SetActive(true);
+            if (_rigidbody.velocity.y > 0.1)
+            {
+                JumpRightAnimation();
+            }
+            else if (_rigidbody.velocity.y < -0.1)
+            {
+                JumpLeftAnimation();
+            }
+        }
+
+        private void JumpRightAnimation()
+        {
+            _jumpSpriteStudioRoot.AnimationPlay(-1, 1, 0, 1);
+        }
+
+        private void JumpLeftAnimation()
+        {
+            _jumpSpriteStudioRoot.AnimationPlay(-1, 0, 0, 1);
+        }
+
+        private void WalkingAnimation()
+        {
+            _animationEnum = AnimationEnum.PlayerWalking;
+            _idlingGameObject.SetActive(false);
+            _jumpGameObject.SetActive(false);
+            _walkGameObject.SetActive(true);
+            if (_rigidbody.velocity.x > 0.01)
+            {
+                WalkingRightAnimation();
+            }
+            else if (_rigidbody.velocity.x < -0.01)
+            {
+                WalkingLeftAnimation();
+            }
+        }
+
+        private void WalkingRightAnimation()
+        {
+            _walkSpriteStudioRoot.AnimationPlay(-1, 1, 0, 1);
+        }
+
+        private void WalkingLeftAnimation()
+        {
+            _walkSpriteStudioRoot.AnimationPlay(-1, 0, 0, 1);
+        }
+
+        private void IdlingRightAnimation()
+        {
+            _idolingspriteStudioRoot.AnimationPlay(-1, 0, 0, 1);
+        }
+
+        private void IdlingLeftAnimation()
+        {
+            _idolingspriteStudioRoot.AnimationPlay(-1, 1, 0, 1);
         }
 
         public void Jump()
@@ -68,84 +183,47 @@ namespace Scripts.Views
         public void Attack()
         {
             Debug.Log("Attack!!");
-            AnimationStateMachine(AnimationEnum.PlayerAttack3);
+            AnimationStateMachine(AnimationEnum.PlayerAttack1);
         }
 
-        public void Blocking()
+        private void AttackAnimation()
         {
-            AnimationStateMachine(AnimationEnum.PlayerBlocking);
-        }
-
-        private async UniTask IdlingAnimation()
-        {
-            if (_isAnimating) return;
-            if (_rigidbody.velocity.x != 0)
+            _isAnimating = true;
+            if (_rigidbody.velocity.x > 0.01)
             {
-                DashAnimation().Forget();
-                return;
+                AttackRightAnimation();
             }
-            var standingSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerIdling);
-            var cnt = 0;
-            var max = standingSprites.Length - 1;
-            while (true)
-            {
-                await UniTask.Delay(200);
-                _spriteRenderer.sprite = standingSprites[cnt];
-                cnt++;
-                if (cnt > max)
-                {
-                    AnimationStateMachine(AnimationEnum.PlayerIdling);
-                    break;
-                }
-            }
-        }
 
-
-        private async UniTask DashAnimation()
-        {
-            Sprite[] dashAnimation;
-            if (_rigidbody.velocity.x > 0)
+            if (_rigidbody.velocity.x < -0.01)
             {
-                dashAnimation = AnimationRepository.GetSprites(AnimationEnum.PlayerDashRight);
+                AttackLeftAnimation();
             }
             else
             {
-                dashAnimation = AnimationRepository.GetSprites(AnimationEnum.PlayerDashLeft);
+                AttackRightAnimation();
             }
-            var cnt = 0;
-            var max = dashAnimation.Length - 1;
-            while (true)
-            {
-                await UniTask.Delay(200);
-                _spriteRenderer.sprite = dashAnimation[cnt];
-                cnt++;
-                if (cnt > max)
-                {
-                    AnimationStateMachine(AnimationEnum.PlayerIdling);
-                    break;
-                }
-            }
+
+            _attackSpriteStudioRoot.FunctionPlayEnd += LoopBackFunction;
         }
 
-
-        private async UniTask AttackAnimation()
+        private bool LoopBackFunction(Script_SpriteStudio6_Root scriptroot, GameObject objectcontrol)
         {
-            _weaponView.gameObject.SetActive(true);
-            _weaponView.PlayAttackAnimation().Forget();
-            var attackSprites = AnimationRepository.GetSprites(AnimationEnum.PlayerAttack3);
-            _isAnimating = true;
-
-            var max = attackSprites.Length;
-            for (int i = 0;
-                i < max;
-                i++)
-            {
-                _spriteRenderer.sprite = attackSprites[i];
-                await UniTask.Delay(50);
-            }
-
             _isAnimating = false;
-            AnimationStateMachine(AnimationEnum.PlayerIdling);
+            _AttackGameObject.SetActive(false);
+            _idlingGameObject.SetActive(true);
+            _walkGameObject.SetActive(false);
+            _jumpGameObject.SetActive(false);
+            return true;
+        }
+
+        private void AttackRightAnimation()
+        {
+            _attackSpriteStudioRoot.AnimationPlay(-1, 1, 1, 1);
+        }
+
+        private void AttackLeftAnimation()
+        {
+            _attackSpriteStudioRoot.AnimationPlay(-1, 0, 1, 1);
         }
 
 

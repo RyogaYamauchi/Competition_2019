@@ -7,13 +7,14 @@ using Scripts.Views;
 using UniRx.Async;
 using UnityEngine;
 using ViewModels;
+using Object = UnityEngine.Object;
 
 namespace Scripts.Presenters
 {
     public interface IUIPresenter
     {
         UniTask Open(Action callback, int id);
-        Sprite LoadSprite(int spriteId);
+        Object LoadSpritePrefab(int characterId);
         void GetInput();
         void Show();
         void Hide();
@@ -43,11 +44,11 @@ namespace Scripts.Presenters
             GetInput();
         }
 
-        public Sprite LoadSprite(int characterId)
+        public Object LoadSpritePrefab(int characterId)
         {
             var sprites= Resources.LoadAll("Sprites/Characters");
-            var sprite = sprites[characterId];
-            return (Sprite)sprite;
+            var obj = sprites[0];
+            return (GameObject)obj;
         }
 
         public async void GetInput()

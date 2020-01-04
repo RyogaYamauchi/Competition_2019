@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using Framework;
 using Scripts.Presenters;
 using UniRx.Async;
 using UnityEngine;
@@ -8,9 +8,9 @@ using ViewModels;
 
 namespace Scripts.Views
 {
-    public class UIManagerView : MonoBehaviour
+    public class UIManagerView : ViewBase
     {
-        [SerializeField] private Image _characterImage;
+        [SerializeField] private GameObject _characterImageRoot;
         [SerializeField] private Text _characterName;
         [SerializeField] private Text _main;
 
@@ -38,7 +38,8 @@ namespace Scripts.Views
         public async void UpdateView(TalkViewModel talkViewModel)
         {
             _characterName.text = talkViewModel.CharacterName;
-            _characterImage.sprite = Presenter.LoadSprite(talkViewModel.CharacterID);
+            var a = Presenter.LoadSpritePrefab(talkViewModel.CharacterID);
+            CreateGameObjectFromObject(a, _characterImageRoot);
             _current++;
             await MainTextAnimation(talkViewModel.MainText);
         }

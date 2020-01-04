@@ -11,6 +11,7 @@ namespace Scripts.Presenters
         float MoveForceMultiplier { get; }
         float MoveSpeed { get; }
         float JumpPower { get; }
+        int Direction { get; }
         void Move(Vector2 direction);
         void Jump();
         void Attack();
@@ -28,6 +29,7 @@ namespace Scripts.Presenters
         public float MoveForceMultiplier => PlayerModel.MoveForceMultiplier;
         public float MoveSpeed => PlayerModel.MoveSpeed;
         public float JumpPower => PlayerModel.JumpPower;
+        public int Direction => PlayerModel.Direction;
 
         public PlayerPresenter(PlayerView playerView)
         {
@@ -73,6 +75,7 @@ namespace Scripts.Presenters
                         Attack();
                         break;
                 }
+
                 Move(direction);
                 await UniTask.DelayFrame(1);
             }

@@ -6,6 +6,12 @@ namespace Framework
 {
     public abstract class ViewBase : MonoBehaviour
     {
+        public GameObject CreateGameObjectFromObject(Object obj,GameObject parent)
+        {
+            var instace = (GameObject) Instantiate(obj, parent.transform.position, Quaternion.identity);
+            instace.transform.SetParent(parent.transform);
+            return instace;
+        }
         /// <summary>
         /// ロード時に呼び出される
         /// </summary>
