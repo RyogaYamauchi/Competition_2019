@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5633782117951314265}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3906745240506367702}
   - component: {fileID: 5089035652311296110}
   - component: {fileID: 832360059244400249}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 5181723306780423642}
   - component: {fileID: 8656636953255809445}
   - component: {fileID: 4241701207839838946}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8685293382973650783}
   - component: {fileID: 6814590457952259582}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,8 +221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.029, y: 0.551}
-  m_SizeDelta: {x: 108.009, y: 28.3817}
+  m_AnchoredPosition: {x: -0.058, y: 1.897}
+  m_SizeDelta: {x: 294.668, y: 68.586}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6814590457952259582
 MonoBehaviour:
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 5378593740734247977}
   - component: {fileID: 7752512217983099805}
   - component: {fileID: 9128925097008995304}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 5}
+    oldSize: {x: 3.2, y: 3.2}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

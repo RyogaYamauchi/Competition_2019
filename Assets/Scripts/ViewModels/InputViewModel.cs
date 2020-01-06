@@ -1,8 +1,9 @@
+using Framework;
 using UnityEngine;
 
 namespace Scripts.Models
 {
-    public class InputViewModel
+    public class InputViewModel : IViewModel
     {
         private string _input;
         private Vector2 _direction;

@@ -3,6 +3,7 @@ namespace Scripts.Models
     public enum AnimationEnum
     {
         PlayerAttack1,
+        PlayerProjectileAttack1,
 
      
         PlayerWalking,
@@ -13,6 +14,8 @@ namespace Scripts.Models
 
 
         WeaponAttack1,
+        
+        
     }
 }
 

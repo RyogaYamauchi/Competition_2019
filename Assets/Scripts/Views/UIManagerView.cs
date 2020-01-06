@@ -8,25 +8,51 @@ using ViewModels;
 
 namespace Scripts.Views
 {
+    /// <summary>
+    /// トークなどのUIを扱うView
+    /// InitでPresenterを受け取りデータの受け渡しをする
+    /// </summary>
     public class UIManagerView : ViewBase
     {
+        /// <summary>
+        /// Unityからアタッチするフィールド
+        /// </summary>
         [SerializeField] private GameObject _characterImageRoot;
         [SerializeField] private Text _characterName;
         [SerializeField] private Text _main;
 
-
+        /// <summary>
+        /// トークをするための初期値を入れるフィールド
+        /// </summary>
         private TalkViewModel[] _talkModels;
-        private int _current = 0;
         private Action _callback;
-        public bool IsAnimation { get; private set; }
-        public bool Skip;
 
-        public IUIPresenter Presenter { get; private set; }
+        /// <summary>
+        /// 現在のトーク状態などを保持するフィールド
+        /// </summary>
+        private int _current = 0;
+        private bool _skip;
+
+        /// <summary>
+        /// 外部から状態をみれるフィールド
+        /// </summary>
+        public bool IsAnimation { get; private set; }
         public int GetTalkCount => _talkModels.Length;
 
-        public void Init(IUIPresenter presenter)
+
+        /// <summary>
+        /// Presenter
+        /// </summary>
+        public IUIPresenter Presenter { get; protected internal set; }
+
+
+        /// <summary>
+        /// Initializer
+        /// </summary>
+        /// <param name="presenter"></param>
+        public override void Init(PresenterBase presenterBase = null, IViewModel viewModel = null)
         {
-            Presenter = presenter;
+            Presenter = presenterBase as IUIPresenter;
         }
 
         public void Set(Action callback, TalkViewModel[] talkModels)
@@ -35,7 +61,7 @@ namespace Scripts.Views
             _callback = callback;
         }
 
-        public async void UpdateView(TalkViewModel talkViewModel)
+        private async void UpdateView(TalkViewModel talkViewModel)
         {
             _characterName.text = talkViewModel.CharacterName;
             var a = Presenter.LoadSpritePrefab(talkViewModel.CharacterID);
@@ -50,7 +76,7 @@ namespace Scripts.Views
             IsAnimation = true;
             for (int i = 0; i < text.Length; i++)
             {
-                if (Skip)
+                if (_skip)
                 {
                     _main.text = text;
                     IsAnimation = false;
@@ -70,24 +96,21 @@ namespace Scripts.Views
                 Finish();
                 return;
             }
-
             if (IsAnimation)
             {
-                Skip = true;
+                _skip = true;
             }
             else
             {
-                Skip = false;
+                _skip = false;
                 UpdateView(_talkModels[_current]);
             }
-            
         }
 
-        public void Finish()
+        private void Finish()
         {
             _callback?.Invoke();
             gameObject.SetActive(false);
         }
-
     }
 }

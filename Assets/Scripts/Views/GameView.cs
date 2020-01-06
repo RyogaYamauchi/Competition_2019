@@ -6,21 +6,23 @@ namespace Scripts.Views
 {
     public class GameView : ViewBase
     {
+        /// <summary>
+        /// Presenterと1:1のViewを管理するフィールド
+        /// </summary>
         [SerializeField] private InputManagerView _inputManagerView = default;
 
         [SerializeField] private PlayerView _playerView = default;
         [SerializeField] private CameraManagerView _cameraManagerView = default;
         [SerializeField] private UIManagerView _uiManagerView = default;
 
-            //TODO : あとで消す
-        [SerializeField] public GameObject EnemySpawnPoint = default;
-
-
+        //TODO : あとで消す
+        public GameObject EnemySpawnPoint = default;
+        public GameObject EffectPoint = default;
 
         private void Awake()
         {
             DontDestroyOnLoad(this);
-            GamePresenter.Instance.Init(this, _inputManagerView, _playerView,_cameraManagerView,_uiManagerView);
+            GamePresenter.Instance.Init(this, _inputManagerView, _playerView, _cameraManagerView, _uiManagerView);
         }
 
         public GameObject CreateGameObjectFromObject(Object obj)

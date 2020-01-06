@@ -7,8 +7,7 @@ namespace Scripts.Presenters
 {
     public interface IPlayerPresenter
     {
-        IPlayerModel PlayerModel { get; }
-        float MoveForceMultiplier { get; }
+        float GetMoveForceMultiplier();
         float MoveSpeed { get; }
         float JumpPower { get; }
         int Direction { get; }
@@ -19,27 +18,31 @@ namespace Scripts.Presenters
         void UpdatePos(Vector3 transformPosition);
     }
 
-    public class PlayerPresenter : IPlayerPresenter
+    public class PlayerPresenter :PresenterBase, IPlayerPresenter
     {
+        /// <summary>
+        /// View
+        /// </summary>
         private PlayerView _playerView = default;
-        public IPlayerModel PlayerModel => GameModel.Instance.PlayerModel;
+        
+        /// <summary>
+        /// Model
+        /// </summary>
+        private IPlayerModel _playerModel => GameModel.Instance.PlayerModel;
+        
+        /// <summary>
+        /// Presenter
+        /// </summary>
+        public IInputPresenter InputPresenter => GamePresenter.Instance.InputPresenter;
 
-        public InputPresenter InputPresenter => GamePresenter.Instance.InputPresenter;
-
-        public float MoveForceMultiplier => PlayerModel.MoveForceMultiplier;
-        public float MoveSpeed => PlayerModel.MoveSpeed;
-        public float JumpPower => PlayerModel.JumpPower;
-        public int Direction => PlayerModel.Direction;
+        public float MoveSpeed => _playerModel.MoveSpeed;
+        public float JumpPower => _playerModel.JumpPower;
+        public int Direction => _playerModel.Direction;
 
         public PlayerPresenter(PlayerView playerView)
         {
             _playerView = playerView;
             playerView.Init(this);
-        }
-
-        public Vector3 GetPosition()
-        {
-            return _playerView.GetPosition();
         }
 
         public void Move(Vector2 direction)
@@ -59,6 +62,12 @@ namespace Scripts.Presenters
             _playerView.Attack();
         }
 
+        public void AttackProjectile()
+        {
+            Debug.Log("飛び道具攻撃！！");
+            _playerView.AttackProjectile();
+        }
+
         public async void GetInput()
         {
             while (true)
@@ -74,6 +83,9 @@ namespace Scripts.Presenters
                     case "f":
                         Attack();
                         break;
+                    case "r":
+                        AttackProjectile();
+                        break;
                 }
 
                 Move(direction);
@@ -83,7 +95,13 @@ namespace Scripts.Presenters
 
         public void UpdatePos(Vector3 transformPosition)
         {
-            PlayerModel.UpdatePos(transformPosition);
+            _playerModel.UpdatePos(transformPosition);
         }
+
+        public float GetMoveForceMultiplier()
+        {
+            return _playerModel.MoveForceMultiplier;
+        }
+
     }
 }

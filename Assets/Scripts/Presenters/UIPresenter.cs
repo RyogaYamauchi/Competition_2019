@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Repository;
 using Scripts.Models;
 using Scripts.Views;
@@ -19,11 +18,28 @@ namespace Scripts.Presenters
         void Show();
         void Hide();
     }
-    public class UIPresenter : IUIPresenter
+
+    public class UIPresenter : PresenterBase, IUIPresenter
     {
+        /// <summary>
+        /// View
+        /// </summary>
         public UIManagerView View { get; }
+        
+        /// <summary>
+        /// Model
+        /// </summary>
         public UIModel Model => GameModel.Instance.UiModel;
-        public InputPresenter InputPresenter => GamePresenter.Instance.InputPresenter;
+        
+        /// <summary>
+        /// Presenter
+        /// </summary>
+        public IInputPresenter InputPresenter => GamePresenter.Instance.InputPresenter;
+
+        /// <summary>
+        /// Repository
+        /// </summary>
+        private ITalkRepository _talkRepository => GameRepository.Instance.TalkRepository;
 
         public UIPresenter(UIManagerView uiManagerView)
         {
@@ -33,22 +49,23 @@ namespace Scripts.Presenters
 
         public async UniTask Open(Action callback, int id)
         {
-            var a = await TalkRepository.LoadTalk(id.ToString());
+            var a = await _talkRepository.LoadTalk(id.ToString());
             List<TalkViewModel> talkViewModels = new List<TalkViewModel>();
             for (var i = 0; i < a.Length; i++)
             {
                 talkViewModels.Add(new TalkViewModel(a[i]));
             }
-            View.Set(callback,talkViewModels.ToArray());
+
+            View.Set(callback, talkViewModels.ToArray());
             Show();
             GetInput();
         }
 
         public Object LoadSpritePrefab(int characterId)
         {
-            var sprites= Resources.LoadAll("Sprites/Characters");
+            var sprites = Resources.LoadAll("Sprites/Characters");
             var obj = sprites[0];
-            return (GameObject)obj;
+            return (GameObject) obj;
         }
 
         public async void GetInput()
@@ -62,7 +79,6 @@ namespace Scripts.Presenters
                     GetInput();
                 }
             }
-            
         }
 
         public void Show()
