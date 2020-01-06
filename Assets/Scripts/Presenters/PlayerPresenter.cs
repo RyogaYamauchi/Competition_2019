@@ -59,6 +59,12 @@ namespace Scripts.Presenters
             _playerView.Attack();
         }
 
+        public void AttackProjectile()
+        {
+            Debug.Log("飛び道具攻撃！！");
+            _playerView.AttackProjectile();
+        }
+
         public async void GetInput()
         {
             while (true)
@@ -73,6 +79,9 @@ namespace Scripts.Presenters
                         break;
                     case "f":
                         Attack();
+                        break;
+                    case "r":
+                        AttackProjectile();
                         break;
                 }
 

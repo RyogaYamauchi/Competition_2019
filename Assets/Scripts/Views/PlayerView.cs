@@ -1,6 +1,7 @@
 using Framework;
 using Scripts.Models;
 using Scripts.Presenters;
+using UniRx.Async;
 using UnityEngine;
 
 namespace Scripts.Views
@@ -97,7 +98,7 @@ namespace Scripts.Views
             }
         }
 
-        private void AnimationStateMachine(AnimationEnum animationEnum)
+        private async void AnimationStateMachine(AnimationEnum animationEnum)
         {
             if (_isAnimating) return;
             switch (animationEnum)
@@ -108,6 +109,9 @@ namespace Scripts.Views
                     _walkGameObject.SetActive(false);
                     _jumpGameObject.SetActive(false);
                     AttackAnimation();
+                    break;
+                case AnimationEnum.PlayerProjectileAttack1:
+                    AttackProjectileAnimation();
                     break;
             }
         }
@@ -243,6 +247,19 @@ namespace Scripts.Views
             var moveVector2D = new Vector2(moveVector.x, moveVector.y);
             _rigidbody.AddForce(MoveForceMultiplier * (moveVector2D - velocity));
             Presenter.UpdatePos(gameObject.transform.position);
+        }
+
+        public void AttackProjectile()
+        {
+            AnimationStateMachine(AnimationEnum.PlayerProjectileAttack1);
+        }
+
+        private  void AttackProjectileAnimation()
+        {
+            var obj = Resources.Load("Prefabs/AttackAnimation/1");
+            var instance = CreateGameObjectFromObject(obj, GamePresenter.Instance.GameView.EffectPoint);
+            instance.GetComponentInChildren<ProjectileView>().Init();
+            instance.GetComponentInChildren<ProjectileView>().PlayAnimation().Forget();
         }
     }
 }

@@ -26,7 +26,8 @@ namespace Scripts.Presenters
             EnemyPresenter = new EnemyPresenter();
             CameraPresenter = new CameraPresenter(cameraManagerView);
             UIPresenter = new UIPresenter(uiManagerView);
-            await LoadTalkAsync(StartGame, 1);
+//            await LoadTalkAsync(StartGame, 1);
+StartGame();
 
             EnemyPresenter.SpawnEnemy(10, 1);
         }

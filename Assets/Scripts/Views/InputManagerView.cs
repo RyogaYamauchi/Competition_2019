@@ -27,6 +27,10 @@ namespace Scripts.Views
             {
                 _inputString = "c";
             }
+            else if (Input.GetKeyDown("r"))
+            {
+                _inputString = "r";
+            }
         }
         
 

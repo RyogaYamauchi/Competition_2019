@@ -14,6 +14,7 @@ namespace Scripts.Views
 
             //TODO : あとで消す
         [SerializeField] public GameObject EnemySpawnPoint = default;
+        [SerializeField] public GameObject EffectPoint = default;
 
 
 
