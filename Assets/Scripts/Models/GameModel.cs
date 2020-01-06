@@ -1,5 +1,3 @@
-using Scripts.Presenters;
-
 namespace Scripts.Models
 {
     public class GameModel

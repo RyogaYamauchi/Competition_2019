@@ -1,3 +1,4 @@
+using Framework;
 using Scripts.Models;
 using Scripts.Presenters;
 using UniRx.Async;
@@ -5,25 +6,34 @@ using UnityEngine;
 
 namespace Scripts.Views
 {
-    public class CameraManagerView : MonoBehaviour
+    public class CameraManagerView : ViewBase
     {
-        public ICameraPresenter Presenter { get; private set; }
-        public IPlayerModel PlayerModel { get; private set; }
-        public void Init(ICameraPresenter CameraPresenter)
+        /// <summary>
+        /// Presenter
+        /// </summary>
+        private ICameraPresenter _presenter;
+        
+        /// <summary>
+        /// Model
+        /// </summary>
+        private IPlayerModel _playerModel;
+        
+        
+        public override void Init(PresenterBase presenter= null, IViewModel viewModel = null)
         {
-            Presenter = CameraPresenter;
-            PlayerModel = GameModel.Instance.PlayerModel;
+            _presenter = presenter as ICameraPresenter;
+            _playerModel = GameModel.Instance.PlayerModel;
         }
 
         public async UniTask UpdatePos()
         {
-            if (!Presenter.IsEnableMove) return;
-            Vector2 playerPos = PlayerModel.GetPosition();
+            if (!_presenter.IsEnableMove) return;
+            Vector2 playerPos = _playerModel.GetPosition();
             Vector2 pos;
             while (true)
             {
                 await UniTask.DelayFrame(1); 
-                playerPos = PlayerModel.GetPosition();
+                playerPos = _playerModel.GetPosition();
                 pos = gameObject.transform.position;
                 gameObject.transform.position = Vector3.Lerp(new Vector3(pos.x,pos.y,-10), new Vector3(playerPos.x,playerPos.y,-10) , Time.deltaTime);
             }

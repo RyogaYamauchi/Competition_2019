@@ -1,8 +1,9 @@
+using Framework;
 using Scripts.Models;
 
 namespace ViewModels
 {
-    public class TalkViewModel
+    public class TalkViewModel : IViewModel
     {
         public int CharacterID { get; }
         public string MainText { get; }

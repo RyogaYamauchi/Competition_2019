@@ -8,10 +8,19 @@ namespace Scripts.Presenters
         bool IsEnableMove { get; set; }
         void UpdatePos();
     }
-    public class CameraPresenter : ICameraPresenter
+
+    public class CameraPresenter : PresenterBase, ICameraPresenter
     {
-        public CameraManagerView CameraManagerView { get; private set; }
+        /// <summary>
+        /// View
+        /// </summary>
+        private CameraManagerView CameraManagerView { get; }
+        
+        /// <summary>
+        /// 外部からアクセスできるプロパティ
+        /// </summary>
         public bool IsEnableMove { get; set; } = false;
+
         public CameraPresenter(CameraManagerView cameraManagerView)
         {
             CameraManagerView = cameraManagerView;

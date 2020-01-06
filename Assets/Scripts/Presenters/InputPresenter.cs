@@ -1,15 +1,26 @@
 using Scripts.Models;
 using Scripts.Views;
 using UniRx.Async;
-using UnityEngine;
 
 namespace Scripts.Presenters
 {
-    public class InputPresenter
+    public interface IInputPresenter
     {
+        InputViewModel GetInput();
+        UniTask<bool> IsInputAsync(string need);
+    }
+
+    public class InputPresenter : PresenterBase, IInputPresenter
+    {
+        /// <summary>
+        /// View
+        /// </summary>
         private InputManagerView _view;
+
+        /// <summary>
+        /// 外部からアクセスできるプロパティ
+        /// </summary>
         public bool IsEnableInput { get; private set; } = true;
-        
 
         public InputPresenter(InputManagerView view)
         {
@@ -33,11 +44,6 @@ namespace Scripts.Presenters
             }
 
             return false;
-        }
-
-        public bool GetJump()
-        {
-            return _view.GetJump();
         }
     }
 }

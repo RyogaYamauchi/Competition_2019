@@ -289,6 +289,9 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Framework" t="Include">
+            <e p="IViewModel.cs" t="Include" />
+            <e p="PresenterBase.cs" t="Include" />
+            <e p="RepositoryBase.cs" t="Include" />
             <e p="ViewBase.cs" t="Include" />
           </e>
           <e p="Models" t="Include">
@@ -298,6 +301,7 @@
             <e p="GameModel.cs" t="Include" />
             <e p="InputModel.cs" t="Include" />
             <e p="PlayerModel.cs" t="Include" />
+            <e p="ProjectileModel.cs" t="Include" />
             <e p="TalkModel.cs" t="Include" />
             <e p="UIModel.cs" t="Include" />
           </e>
@@ -307,11 +311,12 @@
             <e p="GamePresenter.cs" t="Include" />
             <e p="InputPresenter.cs" t="Include" />
             <e p="PlayerPresenter.cs" t="Include" />
+            <e p="ProjectilePresenter.cs" t="Include" />
             <e p="UIPresenter.cs" t="Include" />
           </e>
           <e p="Repository" t="Include">
             <e p="AnimationRepository.cs" t="Include" />
-            <e p="CharacterRepository.cs" t="Include" />
+            <e p="GameRepository.cs" t="Include" />
             <e p="TalkRepository.cs" t="Include" />
           </e>
           <e p="ViewModels" t="Include">
@@ -321,14 +326,12 @@
           </e>
           <e p="Views" t="Include">
             <e p="CameraManagerView.cs" t="Include" />
-            <e p="EffectView.cs" t="Include" />
             <e p="EnemyView.cs" t="Include" />
             <e p="GameView.cs" t="Include" />
             <e p="InputManagerView.cs" t="Include" />
             <e p="PlayerView.cs" t="Include" />
             <e p="ProjectileView.cs" t="Include" />
             <e p="UIManagerView.cs" t="Include" />
-            <e p="WeaponView.cs" t="Include" />
           </e>
         </e>
         <e p="SpriteStudio6" t="Include">

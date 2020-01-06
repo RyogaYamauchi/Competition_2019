@@ -1,14 +1,29 @@
 using Framework;
 using Scripts.Models;
+using Scripts.Presenters;
 using UnityEngine;
 
 namespace Scripts.Views
 {
     public class InputManagerView : ViewBase
     {
+        /// <summary>
+        /// InputViewModelを返すためのフィールド
+        /// </summary>
         private float _horizontalInput;
         private float _verticalInput;
         private string _inputString;
+
+        /// <summary>
+        /// Presenter
+        /// </summary>
+        private IInputPresenter _inputPresenter;
+        
+        
+        public override void Init(PresenterBase presenterBase = null, IViewModel viewModel = null)
+        {
+            _inputPresenter = presenterBase as IInputPresenter;
+        }
 
         private void Update()
         {
@@ -40,14 +55,11 @@ namespace Scripts.Views
             return new InputViewModel(_inputString,direction);
         }
 
-        public bool GetJump()
-        {
-            return Input.GetKeyDown("j");
-        }
-
         public bool IsInput(string str)
         {
             return _inputString.Equals(str);
         }
+
+       
     }
 }

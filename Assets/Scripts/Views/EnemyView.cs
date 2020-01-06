@@ -9,16 +9,25 @@ namespace Scripts.Views
 {
     public class EnemyView : ViewBase
     {
-        [SerializeField] private SpriteRenderer _spriteRenderer;
+        /// <summary>
+        /// UI用フィールド
+        /// </summary>
         [SerializeField] private Slider _slider;
+
+        /// <summary>
+        /// ViewModel
+        /// </summary>
         private EnemyViewModel _enemyViewModel;
 
+        /// <summary>
+        /// Presenter
+        /// </summary>
         public IEnemyPresenter Presenter { get; private set; }
 
-        public void Init(IEnemyPresenter presenter, EnemyViewModel enemyViewModel)
+        public override void Init(PresenterBase presenter = null, IViewModel enemyViewModel = null)
         {
-            Presenter = presenter;
-            _enemyViewModel = enemyViewModel;
+            Presenter = presenter as IEnemyPresenter;
+            _enemyViewModel = enemyViewModel is EnemyViewModel ? (EnemyViewModel) enemyViewModel : default;
             _slider.minValue = 0;
             _slider.maxValue = _enemyViewModel.Hp;
             _slider.value = _enemyViewModel.Hp;
@@ -37,12 +46,13 @@ namespace Scripts.Views
         public async UniTask DamageAnimation(int num)
         {
             var current = _enemyViewModel.Hp;
-            for (int i = current; i >current-num; i--)
+            for (int i = current; i > current - num; i--)
             {
                 if (i <= 0)
                 {
                     return;
                 }
+
                 _slider.value = i;
                 await UniTask.DelayFrame(5);
             }

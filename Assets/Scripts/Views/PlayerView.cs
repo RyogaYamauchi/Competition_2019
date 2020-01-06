@@ -8,6 +8,9 @@ namespace Scripts.Views
 {
     public class PlayerView : ViewBase
     {
+        /// <summary>
+        /// Unityからアタッチするフィールド
+        /// </summary>
         [SerializeField] private Rigidbody2D _rigidbody = default;
         [SerializeField] private Object _idolingAnimationPrefab;
         [SerializeField] private Object _walkAnimationPrefab;
@@ -15,21 +18,31 @@ namespace Scripts.Views
         [SerializeField] private Object _jumpAnimationPrefab;
         [SerializeField] private Object pos;
 
+        /// <summary>
+        /// Presenter
+        /// </summary>
         public IPlayerPresenter Presenter { get; private set; }
 
-        public float MoveForceMultiplier => Presenter.MoveForceMultiplier;
-        public float MoveSpeed => Presenter.MoveSpeed;
-        public float _jumpPower => Presenter.JumpPower;
+        public IProjectilePresenter ProjectilePresenter => GamePresenter.Instance.ProjectilePresenter;
+        
+        /// <summary>
+        /// PlayerModelをまとめたフィールド
+        /// </summary>
+        private float _moveForceMultiplier => Presenter.GetMoveForceMultiplier();
+        private float _moveSpeed => Presenter.MoveSpeed;
+        private float _jumpPower => Presenter.JumpPower;
 
+        /// <summary>
+        /// プレイヤーアニメーションを制御するフィールド
+        /// </summary>
         private bool _isAnimating;
         private AnimationEnum _animationEnum = AnimationEnum.PlayerIdling;
         private Script_SpriteStudio6_Root _idolingspriteStudioRoot;
         private Script_SpriteStudio6_Root _walkSpriteStudioRoot;
         private Script_SpriteStudio6_Root _jumpSpriteStudioRoot;
         private Script_SpriteStudio6_Root _attackSpriteStudioRoot;
-
         private GameObject _idlingGameObject;
-        private GameObject _AttackGameObject;
+        private GameObject _attackGameObject;
         private GameObject _walkGameObject;
         private GameObject _jumpGameObject;
 
@@ -38,9 +51,9 @@ namespace Scripts.Views
         /// Initialize
         /// </summary>
         /// <param name="presenter"></param>
-        public void Init(IPlayerPresenter presenter)
+        public override void Init(PresenterBase presenter = null, IViewModel viewModel = null)
         {
-            Presenter = presenter;
+            Presenter = presenter as PlayerPresenter;
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
             var instance = CreateGameObjectFromObject(_idolingAnimationPrefab, (GameObject) pos);
             _idolingspriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
@@ -61,9 +74,10 @@ namespace Scripts.Views
             _attackSpriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
             _attackSpriteStudioRoot.AnimationStop(-1);
             instance.gameObject.SetActive(false);
-            _AttackGameObject = instance;
+            _attackGameObject = instance;
         }
 
+        //TODO : StateMachineに切り出す
         private void Update()
         {
             if (_isAnimating) return;
@@ -98,13 +112,18 @@ namespace Scripts.Views
             }
         }
 
-        private async void AnimationStateMachine(AnimationEnum animationEnum)
+        /// <summary>
+        /// アニメーションの状態を管理するStateMachine
+        /// 引数に再生したアニメーションを指定する
+        /// </summary>
+        /// <param name="animationEnum"></param>
+        private void AnimationStateMachine(AnimationEnum animationEnum)
         {
             if (_isAnimating) return;
             switch (animationEnum)
             {
                 case AnimationEnum.PlayerAttack1:
-                    _AttackGameObject.SetActive(true);
+                    _attackGameObject.SetActive(true);
                     _idlingGameObject.SetActive(false);
                     _walkGameObject.SetActive(false);
                     _jumpGameObject.SetActive(false);
@@ -186,7 +205,6 @@ namespace Scripts.Views
 
         public void Attack()
         {
-            Debug.Log("Attack!!");
             AnimationStateMachine(AnimationEnum.PlayerAttack1);
         }
 
@@ -210,10 +228,17 @@ namespace Scripts.Views
             _attackSpriteStudioRoot.FunctionPlayEnd += LoopBackFunction;
         }
 
+        /// <summary>
+        /// アイドリング以外のアニメーションが終わった時のコールバック
+        /// これを設定しておけば再生が終わると自動でアイドリングに切り替わる
+        /// </summary>
+        /// <param name="scriptroot"></param>
+        /// <param name="objectcontrol"></param>
+        /// <returns></returns>
         private bool LoopBackFunction(Script_SpriteStudio6_Root scriptroot, GameObject objectcontrol)
         {
             _isAnimating = false;
-            _AttackGameObject.SetActive(false);
+            _attackGameObject.SetActive(false);
             _idlingGameObject.SetActive(true);
             _walkGameObject.SetActive(false);
             _jumpGameObject.SetActive(false);
@@ -239,13 +264,11 @@ namespace Scripts.Views
         public void Move(Vector2 direction)
         {
             var moveVector = Vector3.zero;
-            moveVector.x = MoveSpeed * direction.x;
-
-            //_moveVector.z = _moveSpeed * direction.y;
+            moveVector.x = _moveSpeed * direction.x;
             moveVector.y = _rigidbody.velocity.y;
             var velocity = _rigidbody.velocity;
             var moveVector2D = new Vector2(moveVector.x, moveVector.y);
-            _rigidbody.AddForce(MoveForceMultiplier * (moveVector2D - velocity));
+            _rigidbody.AddForce(_moveForceMultiplier * (moveVector2D - velocity));
             Presenter.UpdatePos(gameObject.transform.position);
         }
 
@@ -256,10 +279,8 @@ namespace Scripts.Views
 
         private  void AttackProjectileAnimation()
         {
-            var obj = Resources.Load("Prefabs/AttackAnimation/1");
-            var instance = CreateGameObjectFromObject(obj, GamePresenter.Instance.GameView.EffectPoint);
-            instance.GetComponentInChildren<ProjectileView>().Init();
-            instance.GetComponentInChildren<ProjectileView>().PlayAnimation().Forget();
+            var instance = ProjectilePresenter.CreateObject("Prefabs/AttackAnimation/1");
+            instance.GetComponentInChildren<ProjectileView>().Init(ProjectilePresenter as ProjectilePresenter);
         }
     }
 }

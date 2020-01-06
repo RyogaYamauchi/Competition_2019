@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Scripts.Models
 {
     public readonly struct TalkModel

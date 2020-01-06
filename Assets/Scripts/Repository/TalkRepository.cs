@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using Framework;
 using Scripts.Models;
 using UniRx.Async;
 using UnityEngine;
@@ -8,9 +9,13 @@ using UnityEngine.Assertions;
 
 namespace Repository
 {
-    public static class TalkRepository
+    public interface ITalkRepository
     {
-        public static async UniTask<TalkModel[]> LoadTalk(string path)
+        UniTask<TalkModel[]> LoadTalk(string path);
+    }
+    public class TalkRepository :  RepositoryBase,ITalkRepository
+    {
+        public async UniTask<TalkModel[]> LoadTalk(string path)
         {
             List<TalkModel> talk = new List<TalkModel>();
             int cnt = 0;
