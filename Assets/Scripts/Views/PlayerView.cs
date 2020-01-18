@@ -12,10 +12,8 @@ namespace Scripts.Views
         /// Unityからアタッチするフィールド
         /// </summary>
         [SerializeField] private Rigidbody2D _rigidbody = default;
-        [SerializeField] private Object _idolingAnimationPrefab;
-        [SerializeField] private Object _walkAnimationPrefab;
-        [SerializeField] private Object _attackAnimationPrefab;
-        [SerializeField] private Object _jumpAnimationPrefab;
+
+        [SerializeField] private Object _animationPrefab;
         [SerializeField] private Object pos;
 
         /// <summary>
@@ -37,14 +35,7 @@ namespace Scripts.Views
         /// </summary>
         private bool _isAnimating;
         private AnimationEnum _animationEnum = AnimationEnum.PlayerIdling;
-        private Script_SpriteStudio6_Root _idolingspriteStudioRoot;
-        private Script_SpriteStudio6_Root _walkSpriteStudioRoot;
-        private Script_SpriteStudio6_Root _jumpSpriteStudioRoot;
-        private Script_SpriteStudio6_Root _attackSpriteStudioRoot;
-        private GameObject _idlingGameObject;
-        private GameObject _attackGameObject;
-        private GameObject _walkGameObject;
-        private GameObject _jumpGameObject;
+        private Script_SpriteStudio6_Root _animationSpriteStudio6Root;
 
 
         /// <summary>
@@ -55,26 +46,9 @@ namespace Scripts.Views
         {
             Presenter = presenter as PlayerPresenter;
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-            var instance = CreateGameObjectFromObject(_idolingAnimationPrefab, (GameObject) pos);
-            _idolingspriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
-            _idolingspriteStudioRoot.AnimationStop(-1);
-            _idlingGameObject = instance;
-            instance = CreateGameObjectFromObject(_walkAnimationPrefab, (GameObject) pos);
-            _walkSpriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
-            _walkSpriteStudioRoot.AnimationStop(-1);
-            instance.gameObject.SetActive(false);
-            _walkGameObject = instance;
-            instance = CreateGameObjectFromObject(_jumpAnimationPrefab, (GameObject) pos);
-            _jumpSpriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
-            _jumpSpriteStudioRoot.AnimationStop(-1);
-            instance.gameObject.SetActive(false);
-            _jumpGameObject = instance;
-
-            instance = CreateGameObjectFromObject(_attackAnimationPrefab, (GameObject) pos);
-            _attackSpriteStudioRoot = instance.GetComponent<Script_SpriteStudio6_Root>();
-            _attackSpriteStudioRoot.AnimationStop(-1);
-            instance.gameObject.SetActive(false);
-            _attackGameObject = instance;
+            var instance = CreateGameObjectFromObject(_animationPrefab, (GameObject) pos);
+            _animationSpriteStudio6Root = instance.GetComponent<Script_SpriteStudio6_Root>();
+            _animationSpriteStudio6Root.AnimationStop(-1);
         }
 
         //TODO : StateMachineに切り出す
@@ -94,10 +68,6 @@ namespace Scripts.Views
                 WalkingAnimation();
                 return;
             }
-
-            _idlingGameObject.SetActive(true);
-            _jumpGameObject.SetActive(false);
-            _walkGameObject.SetActive(false);
             if (_animationEnum == AnimationEnum.PlayerIdling) return;
 
             if (Presenter.Direction == 1)
@@ -123,10 +93,6 @@ namespace Scripts.Views
             switch (animationEnum)
             {
                 case AnimationEnum.PlayerAttack1:
-                    _attackGameObject.SetActive(true);
-                    _idlingGameObject.SetActive(false);
-                    _walkGameObject.SetActive(false);
-                    _jumpGameObject.SetActive(false);
                     AttackAnimation();
                     break;
                 case AnimationEnum.PlayerProjectileAttack1:
@@ -138,9 +104,6 @@ namespace Scripts.Views
         private void JumpAnimation()
         {
             _animationEnum = AnimationEnum.PlayerJump;
-            _walkGameObject.SetActive(false);
-            _idlingGameObject.SetActive(false);
-            _jumpGameObject.SetActive(true);
             if (_rigidbody.velocity.y > 0.1)
             {
                 JumpRightAnimation();
@@ -153,20 +116,17 @@ namespace Scripts.Views
 
         private void JumpRightAnimation()
         {
-            _jumpSpriteStudioRoot.AnimationPlay(-1, 1, 0, 1);
+            _animationSpriteStudio6Root.AnimationPlay(-1, 6, 0, 1);
         }
 
         private void JumpLeftAnimation()
         {
-            _jumpSpriteStudioRoot.AnimationPlay(-1, 0, 0, 1);
+            _animationSpriteStudio6Root.AnimationPlay(-1, 7, 0, 1);
         }
 
         private void WalkingAnimation()
         {
             _animationEnum = AnimationEnum.PlayerWalking;
-            _idlingGameObject.SetActive(false);
-            _jumpGameObject.SetActive(false);
-            _walkGameObject.SetActive(true);
             if (_rigidbody.velocity.x > 0.01)
             {
                 WalkingRightAnimation();
@@ -179,22 +139,24 @@ namespace Scripts.Views
 
         private void WalkingRightAnimation()
         {
-            _walkSpriteStudioRoot.AnimationPlay(-1, 1, 0, 1);
+            _animationSpriteStudio6Root.AnimationPlay(-1, 2, 0, 1);
         }
 
         private void WalkingLeftAnimation()
         {
-            _walkSpriteStudioRoot.AnimationPlay(-1, 0, 0, 1);
+            _animationSpriteStudio6Root.AnimationPlay(-1, 3, 0, 1);
+
         }
 
         private void IdlingRightAnimation()
         {
-            _idolingspriteStudioRoot.AnimationPlay(-1, 0, 0, 1);
+            _animationSpriteStudio6Root.AnimationPlay(-1, 0, 0, 1);
         }
 
         private void IdlingLeftAnimation()
         {
-            _idolingspriteStudioRoot.AnimationPlay(-1, 1, 0, 1);
+            _animationSpriteStudio6Root.AnimationPlay(-1, 1, 0, 1);
+
         }
 
         public void Jump()
@@ -225,7 +187,7 @@ namespace Scripts.Views
                 AttackRightAnimation();
             }
 
-            _attackSpriteStudioRoot.FunctionPlayEnd += LoopBackFunction;
+            _animationSpriteStudio6Root.FunctionPlayEnd += LoopBackFunction;
         }
 
         /// <summary>
@@ -238,21 +200,18 @@ namespace Scripts.Views
         private bool LoopBackFunction(Script_SpriteStudio6_Root scriptroot, GameObject objectcontrol)
         {
             _isAnimating = false;
-            _attackGameObject.SetActive(false);
-            _idlingGameObject.SetActive(true);
-            _walkGameObject.SetActive(false);
-            _jumpGameObject.SetActive(false);
             return true;
         }
 
         private void AttackRightAnimation()
         {
-            _attackSpriteStudioRoot.AnimationPlay(-1, 1, 1, 1);
+            _animationSpriteStudio6Root.AnimationPlay(-1, 4, 1, 1);
         }
 
         private void AttackLeftAnimation()
         {
-            _attackSpriteStudioRoot.AnimationPlay(-1, 0, 1, 1);
+            _animationSpriteStudio6Root.AnimationPlay(-1, 5, 1, 1);
+
         }
 
 

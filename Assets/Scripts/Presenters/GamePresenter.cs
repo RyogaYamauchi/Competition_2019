@@ -40,8 +40,8 @@ namespace Scripts.Presenters
             CameraPresenter = new CameraPresenter(cameraManagerView);
             UIPresenter = new UIPresenter(uiManagerView);
             ProjectilePresenter = new ProjectilePresenter();
-//            await LoadTalkAsync(StartGame, 1);
-           StartGame();
+            await LoadTalkAsync(StartGame, 1);
+//           StartGame();
             EnemyPresenter.SpawnEnemy(10, 1);
         }
 

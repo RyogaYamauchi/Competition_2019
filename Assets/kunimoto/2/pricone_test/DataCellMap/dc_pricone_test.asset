@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194737b46e04ff84a936435d5601662f, type: 3}
+  m_Name: dc_pricone_test
+  m_EditorClassIdentifier: 
+  Version: 65537
+  TableCellMap:
+  - Name: pricone_test
+    SizeOriginal: {x: 512, y: 512}
+    TableCell:
+    - Name: face
+      Rectangle:
+        serializedVersion: 2
+        x: 16
+        y: 10
+        width: 162
+        height: 156
+      Pivot: {x: 81, y: 78}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: body
+      Rectangle:
+        serializedVersion: 2
+        x: 33
+        y: 172
+        width: 115
+        height: 123
+      Pivot: {x: 57.5, y: 61.5}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: sholder_right
+      Rectangle:
+        serializedVersion: 2
+        x: 210
+        y: 11
+        width: 50
+        height: 77
+      Pivot: {x: 25, y: 38.5}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: crotch_right
+      Rectangle:
+        serializedVersion: 2
+        x: 200
+        y: 257
+        width: 75
+        height: 52
+      Pivot: {x: 37.5, y: 26}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: thigh_right
+      Rectangle:
+        serializedVersion: 2
+        x: 220
+        y: 321
+        width: 54
+        height: 60
+      Pivot: {x: 27, y: 30}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: crotch_left
+      Rectangle:
+        serializedVersion: 2
+        x: 277
+        y: 247
+        width: 65
+        height: 61
+      Pivot: {x: 32.5, y: 30.5}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: pricone_test
+      Rectangle:
+        serializedVersion: 2
+        x: 422
+        y: 87
+        width: 49
+        height: 361
+      Pivot: {x: 24.5, y: 180.5}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: thigh_left
+      Rectangle:
+        serializedVersion: 2
+        x: 273
+        y: 316
+        width: 56
+        height: 57
+      Pivot: {x: 28, y: 28.5}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: leg_left
+      Rectangle:
+        serializedVersion: 2
+        x: 284
+        y: 388
+        width: 51
+        height: 83
+      Pivot: {x: 25.5, y: 41.5}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: leg_right
+      Rectangle:
+        serializedVersion: 2
+        x: 199
+        y: 389
+        width: 67
+        height: 81
+      Pivot: {x: 33.5, y: 40.5}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: arm_right
+      Rectangle:
+        serializedVersion: 2
+        x: 203
+        y: 97
+        width: 39
+        height: 74
+      Pivot: {x: 19.5, y: 37}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: hand_right
+      Rectangle:
+        serializedVersion: 2
+        x: 181
+        y: 183
+        width: 59
+        height: 52
+      Pivot: {x: 29.5, y: 26}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: sholder_left
+      Rectangle:
+        serializedVersion: 2
+        x: 278
+        y: 24
+        width: 50
+        height: 78
+      Pivot: {x: 25, y: 39}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: arm_left
+      Rectangle:
+        serializedVersion: 2
+        x: 280
+        y: 110
+        width: 85
+        height: 60
+      Pivot: {x: 42.5, y: 30}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
+    - Name: hand_left
+      Rectangle:
+        serializedVersion: 2
+        x: 314
+        y: 174
+        width: 53
+        height: 45
+      Pivot: {x: 26.5, y: 22.5}
+      Mesh:
+        TableCoordinate: []
+        TableIndexVertex: 
