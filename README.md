@@ -2,10 +2,10 @@
 このプロジェクトは電子計算機応用部(C.A.C.)で2019/12 ~ 2020/02に行われたコンペティションの作品です。
 
 ## 環境
-Unity 2019.2.4f
-Rider 2019.1
-Sprite Studio 6
-UniRx.Async
+* Unity 2019.2.4f
+* Rider 2019.1
+* Sprite Studio 6
+* UniRx.Async
 
 ## 機能
 横スク2Dアクションゲームです。
