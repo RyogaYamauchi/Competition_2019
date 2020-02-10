@@ -35,7 +35,7 @@ namespace Scripts.Views
                 await UniTask.DelayFrame(1); 
                 playerPos = _playerModel.GetPosition();
                 pos = gameObject.transform.position;
-                gameObject.transform.position = Vector3.Lerp(new Vector3(pos.x,pos.y,-10), new Vector3(playerPos.x,playerPos.y,-10) , Time.deltaTime);
+                gameObject.transform.position = Vector3.Lerp(new Vector3(pos.x,pos.y,-10), new Vector3(playerPos.x,playerPos.y+2,-10) , Time.deltaTime);
             }
         }
     }
