@@ -11,7 +11,7 @@ namespace Scripts.Views
         /// <summary>
         /// Unityからアタッチするフィールド
         /// </summary>
-        [SerializeField] private Rigidbody2D _rigidbody = default;
+        [SerializeField] private Rigidbody _rigidbody = default;
 
         [SerializeField] private Object _animationPrefab;
         [SerializeField] private Object pos;
@@ -42,10 +42,10 @@ namespace Scripts.Views
         /// Initialize
         /// </summary>
         /// <param name="presenter"></param>
-        public override void Init(PresenterBase presenter = null, IViewModel viewModel = null)
+        public void Init(PresenterBase presenter = null, IViewModel viewModel = null)
         {
             Presenter = presenter as PlayerPresenter;
-            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             var instance = CreateGameObjectFromObject(_animationPrefab, (GameObject) pos);
             _animationSpriteStudio6Root = instance.GetComponent<Script_SpriteStudio6_Root>();
             _animationSpriteStudio6Root.AnimationStop(-1);
@@ -226,8 +226,8 @@ namespace Scripts.Views
             moveVector.x = _moveSpeed * direction.x;
             moveVector.y = _rigidbody.velocity.y;
             var velocity = _rigidbody.velocity;
-            var moveVector2D = new Vector2(moveVector.x, moveVector.y);
-            _rigidbody.AddForce(_moveForceMultiplier * (moveVector2D - velocity));
+            moveVector = new Vector3(moveVector.x, moveVector.y,0);
+            _rigidbody.AddForce(_moveForceMultiplier * (moveVector - velocity));
             Presenter.UpdatePos(gameObject.transform.position);
         }
 

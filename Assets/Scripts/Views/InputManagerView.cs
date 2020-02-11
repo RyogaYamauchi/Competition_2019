@@ -20,7 +20,7 @@ namespace Scripts.Views
         private IInputPresenter _inputPresenter;
         
         
-        public override void Init(PresenterBase presenterBase = null, IViewModel viewModel = null)
+        public void Init(PresenterBase presenterBase = null, IViewModel viewModel = null)
         {
             _inputPresenter = presenterBase as IInputPresenter;
         }

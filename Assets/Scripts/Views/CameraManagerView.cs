@@ -19,7 +19,7 @@ namespace Scripts.Views
         private IPlayerModel _playerModel;
         
         
-        public override void Init(PresenterBase presenter= null, IViewModel viewModel = null)
+        public void Init(PresenterBase presenter= null, IViewModel viewModel = null)
         {
             _presenter = presenter as ICameraPresenter;
             _playerModel = GameModel.Instance.PlayerModel;

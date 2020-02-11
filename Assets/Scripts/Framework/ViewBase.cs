@@ -14,12 +14,6 @@ namespace Framework
             return instace;
         }
 
-        public virtual void Init(PresenterBase presenterBase = null, IViewModel viewModel = null)
-        {
-            
-        }
-
-
         /// <summary>
         /// ロード時に呼び出される
         /// </summary>

@@ -6,12 +6,14 @@ namespace Scripts.Models
         public EnemiesModel EnemiesModel { get; }
         public IPlayerModel PlayerModel { get; }
         public UIModel UiModel { get; }
+        public GameProgressModel GameProgressModel { get; }
 
         public GameModel()
         {
             EnemiesModel = new EnemiesModel();
             PlayerModel = new PlayerModel();
             UiModel = new UIModel();
+            GameProgressModel = new GameProgressModel();
         }
     }
 }

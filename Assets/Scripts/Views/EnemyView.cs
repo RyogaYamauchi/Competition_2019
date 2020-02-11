@@ -12,19 +12,26 @@ namespace Scripts.Views
         /// <summary>
         /// UI用フィールド
         /// </summary>
-        [SerializeField] private Slider _slider;
+        [SerializeField] protected Slider _slider;
+
+        [SerializeField] protected Text _debugText;
 
         /// <summary>
         /// ViewModel
         /// </summary>
-        private EnemyViewModel _enemyViewModel;
+        protected EnemyViewModel _enemyViewModel;
 
         /// <summary>
         /// Presenter
         /// </summary>
-        public IEnemyPresenter Presenter { get; private set; }
+        protected IEnemyPresenter Presenter { get; set; }
 
-        public override void Init(PresenterBase presenter = null, IViewModel enemyViewModel = null)
+        public Vector2 Direction;
+
+        protected bool _isDead;
+        
+        
+        protected void Init(PresenterBase presenter = null, IViewModel enemyViewModel = null)
         {
             Presenter = presenter as IEnemyPresenter;
             _enemyViewModel = enemyViewModel is EnemyViewModel ? (EnemyViewModel) enemyViewModel : default;
@@ -60,6 +67,7 @@ namespace Scripts.Views
 
         public async UniTask Dead()
         {
+            _isDead = true;
             await DeadAnimation();
             Destroy(gameObject);
         }
@@ -67,5 +75,6 @@ namespace Scripts.Views
         private async UniTask DeadAnimation()
         {
         }
+        
     }
 }

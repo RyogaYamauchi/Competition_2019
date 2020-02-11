@@ -34,7 +34,7 @@ namespace Scripts.Views
 
         private int _direction => GameModel.Instance.PlayerModel.Direction;
 
-        public override void Init(PresenterBase presenterBase = null, IViewModel viewModel = null)
+        public void Init(PresenterBase presenterBase = null, IViewModel viewModel = null)
         {
             _presenter = presenterBase as IProjectilePresenter;
             _rigidbody2D = GetComponent<Rigidbody2D>();

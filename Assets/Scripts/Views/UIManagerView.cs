@@ -50,7 +50,7 @@ namespace Scripts.Views
         /// Initializer
         /// </summary>
         /// <param name="presenter"></param>
-        public override void Init(PresenterBase presenterBase = null, IViewModel viewModel = null)
+        public void Init(PresenterBase presenterBase = null, IViewModel viewModel = null)
         {
             Presenter = presenterBase as IUIPresenter;
         }

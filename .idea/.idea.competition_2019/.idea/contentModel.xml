@@ -288,6 +288,9 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="ForTest" t="Include">
+            <e p="GamePresenterForTest.cs" t="Include" />
+          </e>
           <e p="Framework" t="Include">
             <e p="IViewModel.cs" t="Include" />
             <e p="PresenterBase.cs" t="Include" />
@@ -334,8 +337,11 @@
             <e p="GameProgressPointView.cs" t="Include" />
             <e p="GameView.cs" t="Include" />
             <e p="InputManagerView.cs" t="Include" />
+            <e p="MoveRouteEnemyView.cs" t="Include" />
             <e p="PlayerView.cs" t="Include" />
             <e p="ProjectileView.cs" t="Include" />
+            <e p="StaticEnemyView.cs" t="Include" />
+            <e p="TrackingEnemyView.cs" t="Include" />
             <e p="UIManagerView.cs" t="Include" />
           </e>
         </e>
