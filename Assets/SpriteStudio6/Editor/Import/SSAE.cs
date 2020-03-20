@@ -4514,7 +4514,7 @@ public static partial class LibraryEditor_SpriteStudio6
 								receiveShadows = meshRenderer.receiveShadows;
 								motionVectorGenerationMode = meshRenderer.motionVectorGenerationMode;
 								allowOcclusionWhenDynamic = meshRenderer.allowOcclusionWhenDynamic;
-								lightmapStatic = (0 != (GameObjectUtility.GetStaticEditorFlags(gameObjectRoot) & StaticEditorFlags.LightmapStatic)) ? true : false;
+								lightmapStatic = (0 != (GameObjectUtility.GetStaticEditorFlags(gameObjectRoot) & StaticEditorFlags.ContributeGI)) ? true : false;
 								lightmapIndex = meshRenderer.lightmapIndex;
 								lightmapScaleOffset = meshRenderer.lightmapScaleOffset;
 								lightProbeProxyVolumeOverride = meshRenderer.lightProbeProxyVolumeOverride;
@@ -4759,7 +4759,7 @@ public static partial class LibraryEditor_SpriteStudio6
 								meshRenderer.allowOcclusionWhenDynamic = allowOcclusionWhenDynamic;
 								StaticEditorFlags staticFlag = GameObjectUtility.GetStaticEditorFlags(gameObjectRoot);
 								GameObjectUtility.SetStaticEditorFlags(	gameObjectRoot,
-																		(true == lightmapStatic) ? (staticFlag | StaticEditorFlags.LightmapStatic) : (staticFlag & ~StaticEditorFlags.LightmapStatic)
+																		(true == lightmapStatic) ? (staticFlag | StaticEditorFlags.ContributeGI) : (staticFlag & ~StaticEditorFlags.ContributeGI)
 																	);
 								meshRenderer.lightmapIndex = lightmapIndex;
 								meshRenderer.lightmapScaleOffset = lightmapScaleOffset;
@@ -4780,7 +4780,7 @@ public static partial class LibraryEditor_SpriteStudio6
 								meshRenderer.motionVectorGenerationMode = motionVectorGenerationMode;
 								meshRenderer.allowOcclusionWhenDynamic = allowOcclusionWhenDynamic;
 								StaticEditorFlags staticFlag = GameObjectUtility.GetStaticEditorFlags(gameObjectRoot);
-								GameObjectUtility.SetStaticEditorFlags(gameObjectRoot, (staticFlag & ~StaticEditorFlags.LightmapStatic));
+								GameObjectUtility.SetStaticEditorFlags(gameObjectRoot, (staticFlag & ~StaticEditorFlags.ContributeGI));
 							}
 						}
 					}
