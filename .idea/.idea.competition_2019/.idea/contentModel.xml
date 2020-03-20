@@ -299,6 +299,7 @@
           </e>
           <e p="MasterDatas" t="Include">
             <e p="AnimationEnum.cs" t="Include" />
+            <e p="EnemySpawnPointMasterData.cs" t="Include" />
           </e>
           <e p="Models" t="Include">
             <e p="EnemiesModel.cs" t="Include" />
@@ -313,6 +314,8 @@
           </e>
           <e p="Presenters" t="Include">
             <e p="CameraPresenter.cs" t="Include" />
+            <e p="EnemiesPresenter.cs" t="Include" />
+            <e p="EnemiesSpawnPointPresenter.cs" t="Include" />
             <e p="EnemyPresenter.cs" t="Include" />
             <e p="GamePresenter.cs" t="Include" />
             <e p="InputPresenter.cs" t="Include" />
@@ -332,6 +335,8 @@
           </e>
           <e p="Views" t="Include">
             <e p="CameraManagerView.cs" t="Include" />
+            <e p="EnemiesSpawnPointView.cs" t="Include" />
+            <e p="EnemyCollider.cs" t="Include" />
             <e p="EnemySpawnPointView.cs" t="Include" />
             <e p="EnemyView.cs" t="Include" />
             <e p="GameProgressPointView.cs" t="Include" />
@@ -340,6 +345,7 @@
             <e p="MoveRouteEnemyView.cs" t="Include" />
             <e p="PlayerView.cs" t="Include" />
             <e p="ProjectileView.cs" t="Include" />
+            <e p="SordView.cs" t="Include" />
             <e p="StaticEnemyView.cs" t="Include" />
             <e p="TrackingEnemyView.cs" t="Include" />
             <e p="UIManagerView.cs" t="Include" />
@@ -447,44 +453,6 @@
             <e p="Sprite_UnityNative.shader" t="Include" />
             <e p="Sprite_UnityNative_NonBatch.shader" t="Include" />
             <e p="Stencil_SpriteStudio6.shader" t="Include" />
-          </e>
-        </e>
-        <e p="SpriteStudio6Sample" t="Include">
-          <e p="Benchmark" t="Include">
-            <e p="List_BatchImporter.txt" t="Include" />
-            <e p="Script" t="Include">
-              <e p="Script_Sample_Benchmark_SS6PlayerPlay.cs" t="Include" />
-              <e p="Script_Sample_Benchmark_SwitchSSPlayer.cs" t="Include" />
-              <e p="Script_Sample_Benchmark_UnityNativePlay.cs" t="Include" />
-            </e>
-            <e p="SpriteStudioProject" t="Include">
-              <e p="SS6PU_ImportSetting.txt" t="Include" />
-            </e>
-          </e>
-          <e p="BitmapFontNumeric" t="Include">
-            <e p="List_BatchImporter.txt" t="Include" />
-            <e p="Script" t="Include">
-              <e p="Script_Sample_CounterComplex.cs" t="Include" />
-              <e p="Script_Sample_CounterSimple.cs" t="Include" />
-            </e>
-            <e p="SpriteStudioProject" t="Include">
-              <e p="SS6PU_ImportSetting.txt" t="Include" />
-            </e>
-          </e>
-          <e p="DebugFrameByFrame" t="Include">
-            <e p="Script" t="Include">
-              <e p="Script_SpriteStudio6_DebugFrameByFrame.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Doll" t="Include">
-            <e p="List_BatchImporter.txt" t="Include" />
-            <e p="Script" t="Include">
-              <e p="Script_Sample_DollRun.cs" t="Include" />
-              <e p="Script_Sample_DollTrick.cs" t="Include" />
-            </e>
-            <e p="SpriteStudioProject" t="Include">
-              <e p="SS6PU_ImportSetting.txt" t="Include" />
-            </e>
           </e>
         </e>
         <e p="UniRx.Async" t="Include">
