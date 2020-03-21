@@ -28,5 +28,10 @@ namespace UseCases
         {
             return _inputService.InputType;
         }
+
+        public void AddItem(int itemId)
+        {
+            _appState.ItemsModel.AddItem(itemId);
+        }
     }
 }

@@ -29,5 +29,17 @@ namespace Services
             var obj = await Resources.LoadAsync<T>(path);
             return _container.InstantiatePrefabForComponent<T>(obj, transform);
         }
+
+        public async UniTask<T> CreateDependentUIAsync<T>(Transform transform = null) where T : ViewBase
+        {
+            if (transform == null)
+            {
+                transform = _appState.RootModel.UIRoot.transform;
+            }
+
+            var path = typeof(T).GetCustomAttribute<PrefabPathAttribute>().Path;
+            var obj = await Resources.LoadAsync<T>(path);
+            return _container.InstantiatePrefabForComponent<T>(obj, transform);
+        }
     }
 }

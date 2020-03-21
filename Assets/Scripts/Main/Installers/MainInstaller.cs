@@ -2,6 +2,7 @@ using Models;
 using Presenters;
 using Services;
 using UseCases;
+using Views;
 using Zenject;
 
 namespace Installers
@@ -17,9 +18,11 @@ namespace Installers
             
             //Presenters
             Container.Bind<PlayerPresenter>().AsSingle();
+            Container.Bind<UIItemsPresenter>().AsSingle();
             
             //UseCases
             Container.Bind<PlayerUseCase>().AsSingle();
+            Container.Bind<UIItemsUseCase>().AsSingle();
             
             //Services
             Container.Bind<CreateDependentObjectService>().AsSingle();

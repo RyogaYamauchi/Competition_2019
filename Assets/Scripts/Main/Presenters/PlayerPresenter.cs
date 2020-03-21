@@ -50,8 +50,12 @@ namespace Presenters
                 case InputType.w:
                     View.Jump();
                     break;
-                    ;
             }
+        }
+
+        public void AddItem(int itemId)
+        {
+            _useCase.AddItem(itemId);
         }
     }
 }

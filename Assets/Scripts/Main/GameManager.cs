@@ -9,8 +9,9 @@ namespace Main
 {
     public class GameManager : ViewBase
     {
-        [SerializeField]
-        private GameObject _root;
+        [SerializeField] private GameObject _root;
+
+        [SerializeField] private GameObject _UICanvas;
         private CreateDependentObjectService _createDependentObjectService;
         private AppState _appState;
 
@@ -23,13 +24,14 @@ namespace Main
 
         private void Awake()
         {
-            
         }
 
         private async void Start()
         {
             _appState.RootModel.Root = _root;
-            var view = _createDependentObjectService.CreateDependentObjectAsync<PlayerView>();
+            _appState.RootModel.UIRoot = _UICanvas;
+            var view = await _createDependentObjectService.CreateDependentObjectAsync<PlayerView>();
+            var uiItems = await _createDependentObjectService.CreateDependentUIAsync<UIItemsView>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Framework;
+﻿using System;
+using Framework;
 using Presenters;
 using UniRx;
 using UnityEngine;
@@ -51,6 +52,16 @@ namespace Views
             if (_rigidbody.velocity.y > 0.01f || _rigidbody.velocity.y < -0.01f) return;
 
             _rigidbody.AddForce(new Vector2(0, _jumpPower));
+        }
+
+        public void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Item"))
+            {
+                var itemView = other.gameObject.GetComponent<ItemView>();
+                _presenter.AddItem(itemView.GetId());
+                Destroy(itemView.gameObject);
+            }
         }
     }
 }
