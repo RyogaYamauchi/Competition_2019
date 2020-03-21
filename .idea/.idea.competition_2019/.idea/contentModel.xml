@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/Library/Caches/Rider2019.1/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.1/resharper-host/local/Transient/ReSharperHost/v191/SolutionCaches/_competition_2019.2056104289.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_Competition_2019.1781325410.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -706,6 +706,11 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Editor" t="Include">
+            <e p="Tests" t="Include">
+              <e p="PlayerTest.cs" t="Include" />
+            </e>
+          </e>
           <e p="Framework" t="Include">
             <e p="PrefabAttribute.cs" t="Include" />
             <e p="ViewBase.cs" t="Include" />
@@ -714,6 +719,9 @@
             <e p="GameManager.cs" t="Include" />
             <e p="Installers" t="Include">
               <e p="MainInstaller.cs" t="Include" />
+            </e>
+            <e p="MasterDatas" t="Include">
+              <e p="InputType.cs" t="Include" />
             </e>
             <e p="Models" t="Include">
               <e p="AppState.cs" t="Include" />
@@ -725,6 +733,10 @@
             </e>
             <e p="Services" t="Include">
               <e p="CreateDependentObjectService.cs" t="Include" />
+              <e p="InputService.cs" t="Include" />
+            </e>
+            <e p="UseCases" t="Include">
+              <e p="PlayerUseCase.cs" t="Include" />
             </e>
             <e p="ViewModels" t="Include">
               <e p="PlayerViewModel.cs" t="Include" />
@@ -732,9 +744,6 @@
             <e p="Views" t="Include">
               <e p="PlayerView.cs" t="Include" />
             </e>
-          </e>
-          <e p="UseCases" t="Include">
-            <e p="PlayerUseCase.cs" t="Include" />
           </e>
         </e>
         <e p="SpriteStudio6" t="Include">
