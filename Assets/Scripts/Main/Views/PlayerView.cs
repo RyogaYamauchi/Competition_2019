@@ -43,7 +43,7 @@ namespace Views
             _moveVector = Vector2.zero;
             _moveVector.x = _moveSpeed * direction;
             var velocity = _rigidbody.velocity;
-            _rigidbody.AddForce(_moveForceMultiplier * (_moveVector - velocity));
+            _rigidbody.AddForce(new Vector2(_moveForceMultiplier * (_moveVector - velocity).x,0f));
         }
 
         public void Jump()
