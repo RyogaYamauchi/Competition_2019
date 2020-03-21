@@ -725,11 +725,14 @@
             </e>
             <e p="Models" t="Include">
               <e p="AppState.cs" t="Include" />
+              <e p="ItemModel.cs" t="Include" />
+              <e p="ItemsModel.cs" t="Include" />
               <e p="PlayerModel.cs" t="Include" />
               <e p="RootModel.cs" t="Include" />
             </e>
             <e p="Presenters" t="Include">
               <e p="PlayerPresenter.cs" t="Include" />
+              <e p="UIItemsPresenter.cs" t="Include" />
             </e>
             <e p="Services" t="Include">
               <e p="CreateDependentObjectService.cs" t="Include" />
@@ -737,12 +740,17 @@
             </e>
             <e p="UseCases" t="Include">
               <e p="PlayerUseCase.cs" t="Include" />
+              <e p="UIItemsUseCase.cs" t="Include" />
             </e>
             <e p="ViewModels" t="Include">
               <e p="PlayerViewModel.cs" t="Include" />
+              <e p="UIItemsViewModel.cs" t="Include" />
             </e>
             <e p="Views" t="Include">
+              <e p="ItemView.cs" t="Include" />
               <e p="PlayerView.cs" t="Include" />
+              <e p="UIItemsView.cs" t="Include" />
+              <e p="UIItemView.cs" t="Include" />
             </e>
           </e>
         </e>
