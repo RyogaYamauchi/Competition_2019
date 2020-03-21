@@ -1,7 +1,6 @@
+using Main.MasterDatas;
 using Models;
 using Services;
-using UniRx.Async;
-using UnityEngine;
 using ViewModels;
 
 namespace UseCases
@@ -18,14 +17,16 @@ namespace UseCases
             _inputService = inputService;
         }
 
-        
-        
-        
         public PlayerViewModel GetViewModel()
         {
             var model = _appState.PlayerModel;
             var viewModel = new PlayerViewModel(model);
             return viewModel;
+        }
+
+        public InputType GetInputType()
+        {
+            return _inputService.InputType;
         }
     }
 }

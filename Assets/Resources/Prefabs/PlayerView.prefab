@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 5171791577638297590}
   - component: {fileID: 3519108423231154829}
   m_Layer: 5
-  m_Name: Player
+  m_Name: PlayerView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,6 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 7896224702719499326}
+  _rigidbody: {fileID: 5171791577638297590}
 --- !u!1 &5450845938545866062
 GameObject:
   m_ObjectHideFlags: 0
