@@ -32,12 +32,12 @@ namespace Presenters
 
                 if (inputType != InputType.none)
                 {
-                    Move(inputType);
+                    Input(inputType);
                 }
             }
         }
 
-        private void Move(InputType inputType)
+        private void Input(InputType inputType)
         {
             switch (inputType)
             {
@@ -47,6 +47,10 @@ namespace Presenters
                 case InputType.d:
                     View.Move(1.0f);
                     break;
+                case InputType.w:
+                    View.Jump();
+                    break;
+                    ;
             }
         }
     }

@@ -14,10 +14,11 @@ namespace Views
         [SerializeField] private Slider _slider = default;
         [SerializeField] private Rigidbody2D _rigidbody;
         private PlayerPresenter _presenter;
-        
+
         private float _moveForceMultiplier = 60f;
         private Vector2 _moveVector;
         private float _moveSpeed = 15;
+        private float _jumpPower = 500f;
 
         [Inject]
         private void Construct(PlayerPresenter presenter)
@@ -43,6 +44,11 @@ namespace Views
             _moveVector.x = _moveSpeed * direction;
             var velocity = _rigidbody.velocity;
             _rigidbody.AddForce(_moveForceMultiplier * (_moveVector - velocity));
+        }
+
+        public void Jump()
+        {
+            _rigidbody.AddForce(new Vector2(0, _jumpPower));
         }
     }
 }
