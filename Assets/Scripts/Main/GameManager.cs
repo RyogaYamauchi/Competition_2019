@@ -3,10 +3,11 @@ using Services;
 using UnityEngine;
 using Views;
 using Zenject;
+using Framework;
 
 namespace Main
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : ViewBase
     {
         [SerializeField]
         private GameObject _root;

@@ -23,6 +23,7 @@ namespace Installers
             
             //Services
             Container.Bind<CreateDependentObjectService>().AsSingle();
+            Container.Bind<InputService>().AsSingle();
         }
     }
 }
